@@ -1,7 +1,7 @@
 <div align="center">
 
 # Akshat Rawat
-### *Creative Developer & Digital Architect*
+### *Curious Learner*
 
 <p align="center">
   <a href="https://akshatrawat.is-a.dev">
