@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Akshat — Selected Works</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Cormorant+Garamond:wght@400;600&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <style>
+    /* Critical FOUC Prevention & Initial Loader State */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: #FDFBF7;
+    }
+    body.loading-locked {
+      overflow: hidden !important;
+    }
+    #line-loader {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 10000;
+      background: transparent;
+      overflow: hidden;
+      display: block;
+      pointer-events: auto;
+    }
+    .loader-curtain {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50.5vw;
+      height: 100vh;
+      background-color: #12110f;
+    }
+    .curtain-left { left: 0; }
+    .curtain-right { left: 50vw; }
+    .loader-incision-track {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 10002;
+    }
+    .loader-incision-line {
+      opacity: 0;
+    }
+    .loader-center-crosshair {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      opacity: 0;
+    }
+    .crosshair-svg {
+      width: 30px;
+      height: 30px;
+    }
+    .loader-frame-top,
+    .loader-center-stage,
+    .loader-hud,
+    .loader-frame-bottom-right {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body class="loading-locked">
+  
+  <!-- Recycled Paper Texture Overlay -->
+  <div id="paper-texture"></div>
+
+  <!-- Architectural Line Reveal Loader Overlay -->
+  <aside id="line-loader" class="line-loader-wrapper" aria-label="Loading Portfolio Archive">
+    <!-- Left & Right Shutter Curtains (Obsidian Paper Grain) -->
+    <div class="loader-curtain curtain-left"></div>
+    <div class="loader-curtain curtain-right"></div>
+
+    <!-- Framing Top Editorial Header -->
+    <header class="loader-frame-top">
+      <div class="loader-brand-tag">
+        <span class="loader-tag-name">STUDIO ARCHIVE</span>
+      </div>
+      <div class="loader-frame-edition">SELECTED WORKS // FOLIO 2026</div>
+    </header>
+
+    <!-- Centerpiece Brand Stage -->
+    <div class="loader-center-stage">
+      <div class="loader-stage-kicker">PORTFOLIO EDITION</div>
+      <h1 class="loader-stage-name">AKSHAT RAWAT</h1>
+      <div class="loader-stage-role">Curious Learner</div>
+    </div>
+    
+    <!-- Central Laser Incision Track -->
+    <div class="loader-incision-track">
+      <div class="loader-incision-line"></div>
+      <div class="loader-center-crosshair">
+        <svg viewBox="0 0 24 24" class="crosshair-svg" fill="none">
+          <circle cx="12" cy="12" r="3.5" stroke="#C85A17" stroke-width="1.2" />
+          <line x1="12" y1="2" x2="12" y2="7.5" stroke="#C85A17" stroke-width="1.2" />
+          <line x1="12" y1="16.5" x2="12" y2="22" stroke="#C85A17" stroke-width="1.2" />
+          <line x1="2" y1="12" x2="7.5" y2="12" stroke="#C85A17" stroke-width="1.2" />
+          <line x1="16.5" y1="12" x2="22" y2="12" stroke="#C85A17" stroke-width="1.2" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Archival Telemetry HUD (Bottom-Left) -->
+    <div class="loader-hud">
+      <div class="loader-hud-top">
+        <span class="loader-hud-title">INITIALIZING ARCHIVE</span>
+      </div>
+      <div class="loader-hud-middle">
+        <div class="loader-counter-wrap">
+          <span class="loader-counter-num" id="loader-percent-num">00</span>
+          <span class="loader-counter-unit">%</span>
+        </div>
+        <div class="loader-bar-track">
+          <div class="loader-bar-progress" id="loader-bar-fill"></div>
+        </div>
+      </div>
+      <div class="loader-hud-bottom">
+        <span class="loader-hud-meta">COLLECTION 2026</span>
+        <span class="loader-hud-sub" id="loader-hud-phase">Gathering artifacts & typography</span>
+      </div>
+    </div>
+
+    <!-- Framing Bottom Right Status Tag -->
+    <div class="loader-frame-bottom-right">
+      <span class="loader-status-label">STATUS</span>
+      <span class="loader-status-value">LOCAL SILICON // CRAFT</span>
+    </div>
+  </aside>
+
+
+
+
+
+  <!-- Custom Cursor -->
+  <div id="cursor-tracker"></div>
+  <div id="project-preview-img"></div>
+
+
+
+  <main class="zine-container">
+    
+    <!-- 1. The Cover (Hero) -->
+    <section class="zine-cover">
+      
+      <div class="title-container">
+        <!-- Giant watermark text (Overlap idea) -->
+        <div class="watermark-text">BUILDING</div>
+        
+        <!-- Elegant, smaller foreground text (Minimalist idea) -->
+        <h1 class="elegant-title">
+          <span class="elegant-line-1">Digital</span>
+          <span class="elegant-line-2">Craft</span>
+        </h1>
+        
+        <!-- Highly Realistic Gulmohar Branch Image -->
+        <img src="/gulmohar_branch.jpg" alt="Gulmohar Branch" class="hero-floral" />
+      </div>
+
+    </section>
+
+    <!-- 2. The Studio Dispatch (Editorial Broadside) -->
+    <section class="zine-prologue border-bottom" id="dispatch-section">
+      <div class="dispatch-container">
+        
+
+        <!-- Major Editorial Headline -->
+        <div class="dispatch-headline-wrap">
+          <h2 class="dispatch-headline">
+            Crafting at the collision of <span class="dispatch-script">raw silicon</span> and tactile beauty
+          </h2>
+        </div>
+
+        <!-- 3 Broadsheet Editorial Columns with Sidenotes & Clean Numbering -->
+        <div class="dispatch-columns-grid">
+          
+          <!-- Column 01: The Intention -->
+          <article class="dispatch-col" id="dispatch-col-1">
+            <div class="dispatch-col-header">
+              <span class="dispatch-num">01</span>
+              <span class="dispatch-col-tag">THE INTENTION // TACTILITY</span>
+            </div>
+            <h3 class="dispatch-col-title">Software That Breathes</h3>
+            <p class="dispatch-col-body">
+              The modern web often feels like rented drywall—flat, sterile, and gone the moment a subscription lapses. I treat software like fine bookbinding or instrument making: carving out <mark class="margin-highlight" data-target="note-1">spaces with physical weight<span class="note-glyph">[01]</span></mark>, organic rhythm, and quiet dignity that invite you to linger.
+            </p>
+            
+            <!-- Editorial Margin Note (Archival Marginalia) -->
+            <div class="editorial-margin-card" id="note-1" data-highlight="note-1">
+              <div class="margin-card-top">
+                <span class="margin-symbol">NOTE 01</span>
+                <span class="margin-tag">FIELD NOTE // TACTILITY</span>
+                <span class="margin-pin">—</span>
+              </div>
+              <p class="margin-card-scribble">
+                "Tuned like a mechanical shutter—subtle spring inertia, physical resistance, and zero template fatigue."
+              </p>
+              <div class="margin-card-footer">
+                <span class="margin-glyph-mark">⌜ PROOFED ⌟</span>
+                <span class="margin-meta">SPEC // FOLIO 26</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Column 02: The Obsession -->
+          <article class="dispatch-col" id="dispatch-col-2">
+            <div class="dispatch-col-header">
+              <span class="dispatch-num">02</span>
+              <span class="dispatch-col-tag">THE OBSESSION // SILICON</span>
+            </div>
+            <h3 class="dispatch-col-title">Deep In The Engine Room</h3>
+            <p class="dispatch-col-body">
+              Fluidity isn't an illusion painted on top with CSS tricks—it is engineered straight from the silicon up. I write native Rust, compile to WebAssembly, and sculpt GPU shaders composited at an <mark class="margin-highlight" data-target="note-2">unyielding 120 frames per second<span class="note-glyph">[02]</span></mark>. Speed isn't an ego trip; it's a courtesy to your time.
+            </p>
+
+            <!-- Editorial Margin Note (Archival Marginalia) -->
+            <div class="editorial-margin-card" id="note-2" data-highlight="note-2">
+              <div class="margin-card-top">
+                <span class="margin-symbol">NOTE 02</span>
+                <span class="margin-tag">FIELD NOTE // SILICON</span>
+                <span class="margin-pin">—</span>
+              </div>
+              <p class="margin-card-scribble">
+                "Benchmarked on low-power battery hardware. If it drops even half a frame under heavy load, it doesn't ship."
+              </p>
+              <div class="margin-card-footer">
+                <span class="margin-glyph-mark">⌜ GLSL // WASM ⌟</span>
+                <span class="margin-meta">120 FPS NATIVE</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Column 03: The Promise -->
+          <article class="dispatch-col" id="dispatch-col-3">
+            <div class="dispatch-col-header">
+              <span class="dispatch-num">03</span>
+              <span class="dispatch-col-tag">THE PROMISE // AUTONOMY</span>
+            </div>
+            <h3 class="dispatch-col-title">Made To Outlive The Cloud</h3>
+            <p class="dispatch-col-body">
+              Your thoughts and creations shouldn't be held hostage on someone else’s server. Every system here is engineered local-first with cryptographic privacy: zero cloud surveillance, instant offline responsiveness, and software that <mark class="margin-highlight" data-target="note-3">belongs to you forever<span class="note-glyph">[03]</span></mark>.
+            </p>
+
+            <!-- Editorial Margin Note (Archival Marginalia) -->
+            <div class="editorial-margin-card" id="note-3" data-highlight="note-3">
+              <div class="margin-card-top">
+                <span class="margin-symbol">NOTE 03</span>
+                <span class="margin-tag">FIELD NOTE // AUTONOMY</span>
+                <span class="margin-pin">—</span>
+              </div>
+              <p class="margin-card-scribble">
+                "Zero telemetry pinging motherships. Runs without Wi-Fi, installs without friction, stays yours for decades."
+              </p>
+              <div class="margin-card-footer">
+                <span class="margin-glyph-mark">⌜ ZERO-TRUST ⌟</span>
+                <span class="margin-meta">LOCAL ENCRYPTED</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Broadside Signoff & Perforation Rule -->
+        <div class="dispatch-footer">
+          <div class="dispatch-author-box">
+            <span class="dispatch-author-name">AKSHAT RAWAT</span>
+            <span class="dispatch-author-role">Curious Learner</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 3. The Index (Selected Works / Archival Dossiers) -->
+    <section class="zine-index">
+      <div class="index-header">
+        <div class="index-header-left">
+          <h2 class="section-heading">SELECTED WORKS</h2>
+          <span class="index-subheading">EDITORIAL SPECIMEN DOSSIERS</span>
+        </div>
+        <div class="index-header-right">
+          <span class="index-count">02 ARTIFACTS</span>
+        </div>
+      </div>
+
+      <ul class="project-list" id="project-list">
+        
+        <!-- PROJECT 01: LINKIT -->
+        <li class="project-item" data-id="linkit">
+          <div class="project-row-trigger" tabindex="0" role="button" aria-expanded="false" aria-label="Unfold Linkit Dossier">
+            <div class="proj-num">
+              <span class="num-text">01</span>
+              <span class="proj-pulse-dot dot-orange" title="Edge Production Node"></span>
+            </div>
+            
+            <div class="proj-main-info">
+              <div class="proj-category">SPATIAL CREATOR PROFILE &amp; VAULT</div>
+              <h3 class="proj-name">LINKIT</h3>
+              <p class="proj-desc">Creator Profiles, Reimagined at the Edge.</p>
+            </div>
+
+            <!-- Archival Specimen Slip (Pull-out Boarding Pass on right) -->
+            <div class="specimen-slip slip-orange">
+              <div class="slip-perforation">
+                <span class="slip-scissors">✁</span>
+              </div>
+              <div class="slip-body">
+                <div class="slip-meta">
+                  <span class="slip-serial">SPECIMEN NO. 01/26</span>
+                  <span class="slip-status status-edge">● EDGE ACTIVE</span>
+                </div>
+                <div class="slip-badges">
+                  <span class="slip-pill">RUST WASM</span>
+                  <span class="slip-pill">POST-QUANTUM</span>
+                  <span class="slip-pill">REACT 19</span>
+                </div>
+                <div class="slip-bottom">
+                  <div class="slip-barcode barcode-orange"></div>
+                  <div class="unfold-toggle-btn">
+                    <span class="unfold-label">UNFOLD DOSSIER</span>
+                    <span class="unfold-icon">▼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inline Editorial Broadsheet Tray (Collapsible Accordion) -->
+          <div class="project-dossier-tray" id="dossier-linkit" style="display: none;">
+            <div class="broadsheet-container broadsheet-linkit">
+              
+              <!-- Perforated Top Edge & Stamp -->
+              <div class="broadsheet-header">
+                <div class="broadsheet-stamp-row">
+                  <div class="broadsheet-stamp">SPECIMEN DOSSIER · FOLIO 01 · VERIFIED EDGE RUNTIME</div>
+                  <div class="broadsheet-date">DEPLOYED: 2026 // EDGE GLOBAL</div>
+                </div>
+                <h4 class="broadsheet-headline">One link. Infinite spatial possibilities.</h4>
+                <p class="broadsheet-sub">Reimagining the link-in-bio paradigm through fluid drag canvases, liquid-glass physics, and zero-trust cryptographic vaults.</p>
+              </div>
+
+              <!-- Interactive Cryptographic Engine Simulator (Idea 2) -->
+              <div class="simulator-card simulator-crypto dossier-interactive-zone">
+                <div class="sim-header">
+                  <div class="sim-title-group">
+                    <span class="sim-badge badge-orange">INTERACTIVE BENCHMARK</span>
+                    <h5 class="sim-title">Zero-Trust Cryptographic Engine (Post-Quantum Simulator)</h5>
+                  </div>
+                  <span class="sim-meta-tag" id="crypto-zk-status">● snarkjs PROOF VALIDATED (0.08ms IPC)</span>
+                </div>
+
+                <div class="sim-crypto-body">
+                  <div class="sim-crypto-input-wrap">
+                    <label class="sim-label" for="crypto-input">PAYLOAD TO ENCRYPT (CREATOR TOKEN / DROP):</label>
+                    <div class="sim-input-row">
+                      <input type="text" id="crypto-input" class="sim-text-input" value="Linkit Spatial Drop // Key 2026" placeholder="Enter custom message to encrypt..." />
+                      <button type="button" id="crypto-encrypt-btn" class="sim-action-btn btn-orange">ENCRYPT PAYLOAD →</button>
+                    </div>
+                  </div>
+
+                  <div class="sim-telemetry-grid">
+                    <div class="sim-telemetry-box">
+                      <span class="sim-box-label">KEY EXCHANGE ALGORITHM:</span>
+                      <div class="sim-box-code" id="crypto-kem-out">ML-KEM-768 (KYBER LATTICE)</div>
+                    </div>
+                    <div class="sim-telemetry-box">
+                      <span class="sim-box-label">AES-256-GCM CIPHERTEXT:</span>
+                      <div class="sim-box-code code-hash" id="crypto-cipher-out">aes256_gcm:TGlua2l0$89f201bba29304e28...</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Core Architectural Pillars (With Themed Symbols) -->
+              <div class="broadsheet-grid">
+                
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">01 // STUDIO &amp; MOTION</span>
+                    <div class="col-icon-wrap icon-orange">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Fluid Drag Canvases</h5>
+                  <p class="col-body">Fluid drag layouts, liquid-glass effects, and generative WebGL backgrounds. 60+ bespoke CSS-variable driven themes with hardware-composited 120fps motion choreography.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">02 // COMMERCE SUITE</span>
+                    <div class="col-icon-wrap icon-orange">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">WASM Protected Storefront</h5>
+                  <p class="col-body">Digital products are validated via a Rust-compiled WASM engine prior to decryption. Features multi-creator collaborative payouts engineered over Razorpay.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">03 // CRYPTO VAULT</span>
+                    <div class="col-icon-wrap icon-orange">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path><path d="M9 12l2 2 4-4"></path></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Five-Layer Fortress</h5>
+                  <p class="col-body">Encapsulated via Post-Quantum ML-KEM (Kyber) and AES-256-GCM. Features zero-knowledge identity authentication via client-side snarkjs proofs.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">04 // EDGE COMPUTE</span>
+                    <div class="col-icon-wrap icon-orange">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Worker-Threaded Intelligence</h5>
+                  <p class="col-body">Gemini RAG embeddings and local ML models executed directly inside isolated Web Workers to analyze real-time engagement without main thread blocking.</p>
+                </div>
+
+              </div>
+
+              <!-- Production Stack Matrix Strip -->
+              <div class="broadsheet-tech-strip">
+                <div class="tech-strip-header">
+                  <span class="tech-strip-title">PRODUCTION STACK MATRIX</span>
+                  <span class="slip-status status-edge">4 RUNTIMES VERIFIED</span>
+                </div>
+                <div class="tech-strip-pills">
+                  <span class="tech-pill">React 19</span>
+                  <span class="tech-pill">Vite 8</span>
+                  <span class="tech-pill">GSAP 3</span>
+                  <span class="tech-pill">WebGL Shaders</span>
+                  <span class="tech-pill">Vercel Edge</span>
+                  <span class="tech-pill">Supabase (Postgres)</span>
+                  <span class="tech-pill">Upstash Redis</span>
+                  <span class="tech-pill">snarkjs zk-SNARK</span>
+                  <span class="tech-pill">ML-KEM (Kyber)</span>
+                  <span class="tech-pill">AES-256-GCM</span>
+                </div>
+              </div>
+
+              <!-- Broadsheet Actions & Links -->
+              <div class="broadsheet-actions dossier-interactive-zone">
+                <div class="broadsheet-links">
+                  <a href="https://linkit-tan.vercel.app/" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-primary">
+                    <span>LAUNCH LIVE PLATFORM</span>
+                    <span class="btn-arrow">↗</span>
+                  </a>
+                  <a href="https://github.com/akshatrawat095" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-secondary">
+                    <span>EXPLORE SOURCE REPO</span>
+                    <span class="btn-arrow">↗</span>
+                  </a>
+                  <button type="button" class="broadsheet-btn btn-secondary open-full-overlay-btn" data-project="linkit">
+                    <span>FULL CASE STUDY MODAL</span>
+                    <span class="btn-arrow">⤢</span>
+                  </button>
+                </div>
+                <button type="button" class="dossier-close-btn" aria-label="Close Dossier">
+                  <span>FOLD DOSSIER</span>
+                  <span class="close-symbol">✕</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </li>
+
+        <!-- PROJECT 02: COMPRESS I/O -->
+        <li class="project-item" data-id="compress">
+          <div class="project-row-trigger" tabindex="0" role="button" aria-expanded="false" aria-label="Unfold Compress I/O Dossier">
+            <div class="proj-num">
+              <span class="num-text">02</span>
+              <span class="proj-pulse-dot dot-chartreuse" title="Local Silicon Hardware"></span>
+            </div>
+            
+            <div class="proj-main-info">
+              <div class="proj-category">LOCAL-FIRST SILICON &amp; MEDIA ENGINE</div>
+              <h3 class="proj-name">COMPRESS I/O</h3>
+              <p class="proj-desc">The Ultimate Offline Media Suite. Built for Privacy, Powered by Hardware.</p>
+            </div>
+
+            <!-- Archival Specimen Slip (Pull-out Boarding Pass on right) -->
+            <div class="specimen-slip slip-chartreuse">
+              <div class="slip-perforation">
+                <span class="slip-scissors">✁</span>
+              </div>
+              <div class="slip-body">
+                <div class="slip-meta">
+                  <span class="slip-serial">SPECIMEN NO. 02/25</span>
+                  <span class="slip-status status-silicon">● 100% OFFLINE</span>
+                </div>
+                <div class="slip-badges">
+                  <span class="slip-pill">RUST / TAURI</span>
+                  <span class="slip-pill">NVENC GPU</span>
+                  <span class="slip-pill">STATIC FFMPEG</span>
+                  <span class="slip-pill" id="compress-downloads-pill" style="color: #2F3E0B; background: rgba(118, 142, 27, 0.2); font-weight: 800;">↓ 590+ DL</span>
+                </div>
+                <div class="slip-bottom">
+                  <div class="slip-barcode barcode-chartreuse"></div>
+                  <div class="unfold-toggle-btn">
+                    <span class="unfold-label">UNFOLD DOSSIER</span>
+                    <span class="unfold-icon">▼</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Inline Editorial Broadsheet Tray (Collapsible Accordion) -->
+          <div class="project-dossier-tray" id="dossier-compress" style="display: none;">
+            <div class="broadsheet-container broadsheet-compress">
+              
+              <!-- Perforated Top Edge & Stamp -->
+              <div class="broadsheet-header">
+                <div class="broadsheet-stamp-row">
+                  <div class="broadsheet-stamp">SPECIMEN DOSSIER · FOLIO 02 · ZERO-CLOUD SILICON RUNTIME</div>
+                  <div class="broadsheet-date">BUILT: 2025 // DESKTOP NATIVE</div>
+                </div>
+                <h4 class="broadsheet-headline">Hardware acceleration without cloud exposure.</h4>
+                <p class="broadsheet-sub">Native Rust binaries hijacking dedicated GPU silicon (NVIDIA NVENC, Apple VideoToolbox, Intel QuickSync) for instant media compression with 0 cloud bytes transferred.</p>
+              </div>
+
+              <!-- Interactive Hardware Benchmark Simulator (Idea 2) -->
+              <div class="simulator-card simulator-hardware dossier-interactive-zone">
+                <div class="sim-header">
+                  <div class="sim-title-group">
+                    <span class="sim-badge badge-chartreuse">HARDWARE BENCHMARK SIMULATOR</span>
+                    <h5 class="sim-title">Dedicated GPU Video Compression &amp; Bitrate Engine</h5>
+                  </div>
+                  <span class="sim-meta-tag status-silicon" id="compress-speed-val">174 FPS (NVENC Silicon)</span>
+                </div>
+
+                <div class="sim-compress-body">
+                  <div class="sim-slider-row">
+                    <div class="sim-slider-info">
+                      <span class="sim-label">TARGET OUTPUT FILE SIZE:</span>
+                      <span class="sim-slider-val" id="compress-output-val">8.0 MB</span>
+                    </div>
+                    <input type="range" id="compress-slider" class="sim-range-slider" min="2" max="1400" step="2" value="8" />
+                  </div>
+
+                  <!-- Quick Presets -->
+                  <div class="compress-presets">
+                    <span class="preset-label">TARGET PRESETS:</span>
+                    <button type="button" class="compress-preset-btn is-active" data-size="8">8 MB (Discord)</button>
+                    <button type="button" class="compress-preset-btn" data-size="25">25 MB (Gmail)</button>
+                    <button type="button" class="compress-preset-btn" data-size="100">100 MB (Web Stream)</button>
+                    <button type="button" class="compress-preset-btn" data-size="500">500 MB (Pro Quality)</button>
+                  </div>
+
+                  <div class="sim-telemetry-grid">
+                    <div class="sim-telemetry-box">
+                      <span class="sim-box-label">RAW INPUT (4K PRORES):</span>
+                      <div class="sim-box-code" id="compress-input-val">1.45 GB (ProRes 4K)</div>
+                    </div>
+                    <div class="sim-telemetry-box">
+                      <span class="sim-box-label">SPACE SAVINGS RATIO:</span>
+                      <div class="sim-box-code code-ratio" id="compress-ratio-val">-99.4%</div>
+                    </div>
+                    <div class="sim-telemetry-box">
+                      <span class="sim-box-label">CLOUD EXPOSURE:</span>
+                      <div class="sim-box-code status-silicon">0 BYTES (100% PRIVATE)</div>
+                    </div>
+                  </div>
+
+                  <!-- Animated reduction barometer -->
+                  <div class="sim-barometer">
+                    <div class="sim-barometer-track">
+                      <div class="sim-barometer-fill" id="compress-bar-fill" style="width: 4%;"></div>
+                    </div>
+                    <div class="sim-barometer-legend">
+                      <span>COMPRESSED SIZE</span>
+                      <span>ORIGINAL 1.45 GB</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Core Architectural Pillars (With Themed Symbols) -->
+              <div class="broadsheet-grid">
+                
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">01 // TARGET BINARY SEARCH</span>
+                    <div class="col-icon-wrap icon-chartreuse">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Smart Limit Sizing</h5>
+                  <p class="col-body">Hit exact target file constraints using algorithmic binary search over CRF values, preventing artificial file padding and maintaining optimal perceptual clarity.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">02 // HYBRID ENGINE PIPELINE</span>
+                    <div class="col-icon-wrap icon-chartreuse">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">CPU Read → GPU Write</h5>
+                  <p class="col-body">Fault-tolerant dual architecture preventing out-of-memory crashes on massive 8K video streams or corrupted media inputs.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">03 // UNIVERSAL ACCELERATION</span>
+                    <div class="col-icon-wrap icon-chartreuse">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Direct Silicon Handshake</h5>
+                  <p class="col-body">Auto-detects host GPU hardware: NVIDIA NVENC, AMD AMF, Intel QuickSync, and Apple VideoToolbox with pre-compiled static FFmpeg binaries.</p>
+                </div>
+
+                <div class="broadsheet-card">
+                  <div class="col-header-wrap">
+                    <span class="col-pill">04 // TAURI V2 ARCHITECTURE</span>
+                    <div class="col-icon-wrap icon-chartreuse">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                  </div>
+                  <h5 class="col-heading">Sub-millisecond Rust IPC</h5>
+                  <p class="col-body">Minimalist RAM footprint (&lt;40MB) bundled in a hardened, self-contained desktop binary authenticated with SHA256 checksums.</p>
+                </div>
+
+              </div>
+
+              <!-- Hardware & Compile Matrix Strip -->
+              <div class="broadsheet-tech-strip">
+                <div class="tech-strip-header">
+                  <span class="tech-strip-title">HARDWARE &amp; COMPILE MATRIX</span>
+                  <span class="slip-status status-silicon">100% OFFLINE BINARY</span>
+                </div>
+                <div class="tech-strip-pills">
+                  <span class="tech-pill">Rust 2024</span>
+                  <span class="tech-pill">Tauri v2</span>
+                  <span class="tech-pill">NVIDIA NVENC</span>
+                  <span class="tech-pill">Apple VideoToolbox</span>
+                  <span class="tech-pill">AMD AMF</span>
+                  <span class="tech-pill">Intel QuickSync</span>
+                  <span class="tech-pill">Static FFmpeg</span>
+                  <span class="tech-pill">React 19</span>
+                  <span class="tech-pill">Framer Motion</span>
+                  <span class="tech-pill">SHA-256 Verified</span>
+                </div>
+              </div>
+
+              <!-- Broadsheet Actions & Links -->
+              <div class="broadsheet-actions dossier-interactive-zone">
+                <div class="broadsheet-links">
+                  <a href="https://github.com/akshatrawat095/compress-io/releases" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-primary">
+                    <span>DOWNLOAD LATEST RELEASE</span>
+                    <span class="broadsheet-stat-count" id="compress-broadsheet-count">590+ DL</span>
+                    <span class="btn-arrow">↓</span>
+                  </a>
+                  <a href="https://github.com/akshatrawat095/compress-io" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-secondary">
+                    <span>EXPLORE SOURCE REPO</span>
+                    <span class="btn-arrow">↗</span>
+                  </a>
+                  <button type="button" class="broadsheet-btn btn-secondary open-full-overlay-btn" data-project="compress">
+                    <span>FULL CASE STUDY MODAL</span>
+                    <span class="btn-arrow">⤢</span>
+                  </button>
+                </div>
+                <button type="button" class="dossier-close-btn" aria-label="Close Dossier">
+                  <span>FOLD DOSSIER</span>
+                  <span class="close-symbol">✕</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 4. The Arsenal (Botanical Specimen Spread) -->
+    <section class="zine-toolkit" id="arsenal-section">
+      <!-- Hyper-Realistic Studio Gulmohar Branch (Positioned on Left with wrapper to preserve scaleX) -->
+      <div class="arsenal-floral-wrap">
+        <img src="/gulmohar_branch.jpg" alt="Gulmohar Botanical Branch" class="arsenal-floral-left" />
+      </div>
+
+      <!-- Floating Petal Particles Field -->
+      <div class="petal-field" id="petal-field"></div>
+
+      <!-- Specimen Cards Deck Wrapper (Right-Aligned, Editorial Hierarchy) -->
+      <div class="deck-wrapper">
+        <div class="deck-header">
+          <div class="deck-header-meta">
+            <h2 class="section-heading">03 / THE ARSENAL</h2>
+            <span class="index-count">03 SPECIMENS</span>
+          </div>
+          <h3 class="deck-title">Tactile <span class="deck-script">Disciplines.</span></h3>
+        </div>
+
+        <div class="deck-stage" id="deck-stage">
+          
+          <!-- CARD 01: INTERFACE (BURNT ORANGE & WARM IVORY) -->
+          <div class="atropos specimen-card card-interface" data-card-id="interface" tabindex="0" role="button" aria-label="Interface Specimen Card">
+            <div class="atropos-scale">
+              <div class="atropos-rotate">
+                <div class="atropos-inner">
+                  <div class="card-flipper">
+                    
+                    <!-- Front Face -->
+                    <div class="card-face card-front">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 01</span>
+                        <span class="card-status status-orange">● 120 FPS FLUID</span>
+                      </div>
+                      
+                      <div class="card-body">
+                        <!-- Living Micro-Animation: Reactive Spring Coordinate Matrix -->
+                        <div class="card-micro-stage" data-atropos-offset="2">
+                          <canvas class="micro-canvas" id="canvas-interface"></canvas>
+                          <div class="micro-stage-meta">
+                            <span class="micro-stage-title">COORDINATE MESH</span>
+                            <span class="micro-stage-val" id="interface-coords">X: 00 · Y: 00</span>
+                          </div>
+                        </div>
+
+                        <div class="card-title-group" data-atropos-offset="4">
+                          <div class="card-discipline-label">USER INTERFACE &amp; MOTION</div>
+                          <h4 class="card-title title-orange">Interface</h4>
+                          <div class="card-discipline-sub">Reactive Spatial Canvases</div>
+                        </div>
+                        
+                        <div class="card-ornament-rule rule-orange"></div>
+
+                        <p class="card-summary" data-atropos-offset="2">
+                          Crafting tactile environments through hardware-composited 120fps motion, reactive state trees, and procedural shaders.
+                        </p>
+                        
+                        <div class="card-highlights" data-atropos-offset="3">
+                          <span class="highlight-tag tag-orange">SPATIAL MOTION</span>
+                          <span class="highlight-tag tag-orange">WEBGL SHADERS</span>
+                          <span class="highlight-tag tag-orange">REACTIVE STATE</span>
+                        </div>
+
+                        <div class="card-flip-btn btn-orange" data-atropos-offset="4">
+                          <span>INSPECT TECH MATRIX</span>
+                          <span class="flip-arrow">→</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-orange"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 01</span>
+                        <span class="card-stamp stamp-orange">VERIFIED</span>
+                      </div>
+                    </div>
+
+                    <!-- Back Face (Tech Matrix) -->
+                    <div class="card-face card-back">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 01</span>
+                        <span class="card-status status-stack">6 RUNTIMES</span>
+                      </div>
+
+                      <div class="card-body back-body">
+                        <div class="card-discipline-label" data-atropos-offset="2">PRODUCTION ARSENAL</div>
+                        <h4 class="back-title" data-atropos-offset="4">Interface Stack</h4>
+                        <div class="card-discipline-sub" data-atropos-offset="2">Core Client Technologies</div>
+
+                        <div class="tech-badge-grid" data-atropos-offset="3">
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/react/1C1A17" class="tech-icon" alt="React" />
+                            <div class="badge-text">
+                              <span class="tech-name">REACT 19</span>
+                              <span class="tech-role">Concurrent UI</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/nextdotjs/1C1A17" class="tech-icon" alt="Next.js" />
+                            <div class="badge-text">
+                              <span class="tech-name">NEXT.JS 15</span>
+                              <span class="tech-role">App Router</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/tailwindcss/1C1A17" class="tech-icon" alt="Tailwind" />
+                            <div class="badge-text">
+                              <span class="tech-name">TAILWIND</span>
+                              <span class="tech-role">Design Tokens</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/greensock/1C1A17" class="tech-icon" alt="GSAP" />
+                            <div class="badge-text">
+                              <span class="tech-name">GSAP 3</span>
+                              <span class="tech-role">Kinetic Motion</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/typescript/1C1A17" class="tech-icon" alt="TypeScript" />
+                            <div class="badge-text">
+                              <span class="tech-name">TYPESCRIPT</span>
+                              <span class="tech-role">Strict Types</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/webgl/1C1A17" class="tech-icon" alt="WebGL" />
+                            <div class="badge-text">
+                              <span class="tech-name">WEBGL</span>
+                              <span class="tech-role">GPU Compositing</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="back-quote" data-atropos-offset="2">
+                          "Zero layout shifts. Hardware-composited 120fps motion choreography."
+                        </div>
+
+                        <div class="card-flip-btn back-flip-btn" data-atropos-offset="4">
+                          <span>RETURN TO FOLIO</span>
+                          <span class="flip-arrow">←</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-orange"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 01</span>
+                        <span class="card-stamp stamp-orange">REV. A</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 02: SYSTEMS (BOTANICAL IVORY & OLIVE / CHARTREUSE ACCENTS) -->
+          <div class="atropos specimen-card card-systems" data-card-id="systems" tabindex="0" role="button" aria-label="Systems Specimen Card">
+            <div class="atropos-scale">
+              <div class="atropos-rotate">
+                <div class="atropos-inner">
+                  <div class="card-flipper">
+                    
+                    <!-- Front Face -->
+                    <div class="card-face card-front">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 02</span>
+                        <span class="card-status status-chartreuse">● ZERO-TRUST</span>
+                      </div>
+                      
+                      <div class="card-body">
+                        <!-- Living Micro-Animation: Monospace IPC Telemetry -->
+                        <div class="card-micro-stage" data-atropos-offset="2">
+                          <div class="micro-terminal" id="terminal-systems">
+                            <div class="term-row"><span class="term-dim">SYS:</span> <span class="term-val" id="term-sys">RUST NATIVE SILICON</span></div>
+                            <div class="term-row"><span class="term-dim">IPC:</span> <span class="term-val term-green" id="term-ipc">0.08ms ACTIVE</span></div>
+                            <div class="term-row"><span class="term-dim">KEM:</span> <span class="term-val" id="term-vault">ML-KEM KYBER-768</span></div>
+                          </div>
+                          <div class="micro-stage-meta">
+                            <span class="micro-stage-title">IPC TELEMETRY</span>
+                            <span class="micro-stage-val term-green">● 100% PRIVATE</span>
+                          </div>
+                        </div>
+
+                        <div class="card-title-group" data-atropos-offset="4">
+                          <div class="card-discipline-label">ENGINE &amp; INFRASTRUCTURE</div>
+                          <h4 class="card-title title-chartreuse">Systems</h4>
+                          <div class="card-discipline-sub">Compute &amp; Zero-Trust Architecture</div>
+                        </div>
+                        
+                        <div class="card-ornament-rule rule-chartreuse"></div>
+
+                        <p class="card-summary" data-atropos-offset="2">
+                          Engineering local-first compute engines, native Rust binaries, and zero-trust cryptographic vaults with sub-millisecond IPC.
+                        </p>
+                        
+                        <div class="card-highlights" data-atropos-offset="3">
+                          <span class="highlight-tag tag-chartreuse">RUST WASM</span>
+                          <span class="highlight-tag tag-chartreuse">POST-QUANTUM</span>
+                          <span class="highlight-tag tag-chartreuse">LOCAL-FIRST</span>
+                        </div>
+
+                        <div class="card-flip-btn btn-chartreuse" data-atropos-offset="4">
+                          <span>INSPECT TECH MATRIX</span>
+                          <span class="flip-arrow">→</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-chartreuse"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 02</span>
+                        <span class="card-stamp stamp-chartreuse">KERNEL</span>
+                      </div>
+                    </div>
+
+                    <!-- Back Face (Tech Matrix) -->
+                    <div class="card-face card-back">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 02</span>
+                        <span class="card-status status-stack">6 RUNTIMES</span>
+                      </div>
+
+                      <div class="card-body back-body">
+                        <div class="card-discipline-label" data-atropos-offset="2">PRODUCTION ARSENAL</div>
+                        <h4 class="back-title" data-atropos-offset="4">Systems Stack</h4>
+                        <div class="card-discipline-sub" data-atropos-offset="2">Core Engine Technologies</div>
+
+                        <div class="tech-badge-grid" data-atropos-offset="3">
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/rust/1C1A17" class="tech-icon" alt="Rust" />
+                            <div class="badge-text">
+                              <span class="tech-name">RUST</span>
+                              <span class="tech-role">Native Binaries</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/nodedotjs/1C1A17" class="tech-icon" alt="Node.js" />
+                            <div class="badge-text">
+                              <span class="tech-name">NODE.JS</span>
+                              <span class="tech-role">Event-Driven I/O</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/postgresql/1C1A17" class="tech-icon" alt="PostgreSQL" />
+                            <div class="badge-text">
+                              <span class="tech-name">POSTGRES</span>
+                              <span class="tech-role">Relational &amp; Vectors</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/redis/1C1A17" class="tech-icon" alt="Redis" />
+                            <div class="badge-text">
+                              <span class="tech-name">REDIS</span>
+                              <span class="tech-role">Microsecond Cache</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/supabase/1C1A17" class="tech-icon" alt="Supabase" />
+                            <div class="badge-text">
+                              <span class="tech-name">SUPABASE</span>
+                              <span class="tech-role">Edge Realtime</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/webassembly/1C1A17" class="tech-icon" alt="Wasm" />
+                            <div class="badge-text">
+                              <span class="tech-name">WASM / CRYPTO</span>
+                              <span class="tech-role">AES-256 &amp; ML-KEM</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="back-quote" data-atropos-offset="2">
+                          "Zero-trust local compute. User data is never held hostage, decrypted on silicon."
+                        </div>
+
+                        <div class="card-flip-btn back-flip-btn" data-atropos-offset="4">
+                          <span>RETURN TO FOLIO</span>
+                          <span class="flip-arrow">←</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-chartreuse"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 02</span>
+                        <span class="card-stamp stamp-chartreuse">REV. B</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CARD 03: CRAFT (ARCHITECTURAL IVORY & INK) -->
+          <div class="atropos specimen-card card-craft" data-card-id="craft" tabindex="0" role="button" aria-label="Craft Specimen Card">
+            <div class="atropos-scale">
+              <div class="atropos-rotate">
+                <div class="atropos-inner">
+                  <div class="card-flipper">
+                    
+                    <!-- Front Face -->
+                    <div class="card-face card-front">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 03</span>
+                        <span class="card-status status-ivory">● BESPOKE</span>
+                      </div>
+                      
+                      <div class="card-body">
+                        <!-- Living Micro-Animation: Procedural 3D Wireframe Polyhedron -->
+                        <div class="card-micro-stage" data-atropos-offset="2">
+                          <canvas class="micro-canvas" id="canvas-craft"></canvas>
+                          <div class="micro-stage-meta">
+                            <span class="micro-stage-title">PROCEDURAL 3D WIREFRAME</span>
+                            <span class="micro-stage-val">ROT: 60 FPS</span>
+                          </div>
+                        </div>
+
+                        <div class="card-title-group" data-atropos-offset="4">
+                          <div class="card-discipline-label">VISUAL &amp; SPATIAL CRAFT</div>
+                          <h4 class="card-title title-craft">Craft</h4>
+                          <div class="card-discipline-sub">Atmospheric 3D &amp; Design Direction</div>
+                        </div>
+                        
+                        <div class="card-ornament-rule rule-ivory"></div>
+
+                        <p class="card-summary" data-atropos-offset="2">
+                          Bespoke Three.js spatial environments, procedural GLSL algorithms, and editorial typography typeset with print-era discipline.
+                        </p>
+                        
+                        <div class="card-highlights" data-atropos-offset="3">
+                          <span class="highlight-tag tag-ivory">THREE.JS 3D</span>
+                          <span class="highlight-tag tag-ivory-orange">GLSL NOISE</span>
+                          <span class="highlight-tag tag-ivory-chartreuse">EDITORIAL TYPE</span>
+                        </div>
+
+                        <div class="card-flip-btn btn-ivory" data-atropos-offset="4">
+                          <span>INSPECT TECH MATRIX</span>
+                          <span class="flip-arrow">→</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-ivory"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 03</span>
+                        <span class="card-stamp stamp-ivory">STUDIO</span>
+                      </div>
+                    </div>
+
+                    <!-- Back Face (Tech Matrix) -->
+                    <div class="card-face card-back">
+                      <div class="card-sheen"></div>
+                      
+                      <div class="card-top-bar" data-atropos-offset="2">
+                        <span class="card-vol">FOLIO 03</span>
+                        <span class="card-status status-stack">6 RUNTIMES</span>
+                      </div>
+
+                      <div class="card-body back-body">
+                        <div class="card-discipline-label" data-atropos-offset="2">PRODUCTION ARSENAL</div>
+                        <h4 class="back-title" data-atropos-offset="4">Craft &amp; 3D Stack</h4>
+                        <div class="card-discipline-sub" data-atropos-offset="2">Creative Engineering Suite</div>
+
+                        <div class="tech-badge-grid" data-atropos-offset="3">
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/figma/1C1A17" class="tech-icon" alt="Figma" />
+                            <div class="badge-text">
+                              <span class="tech-name">FIGMA</span>
+                              <span class="tech-role">Design Systems</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/threedotjs/1C1A17" class="tech-icon" alt="Three.js" />
+                            <div class="badge-text">
+                              <span class="tech-name">THREE.JS</span>
+                              <span class="tech-role">Scene Graph &amp; PBR</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/webgl/1C1A17" class="tech-icon" alt="WebGL" />
+                            <div class="badge-text">
+                              <span class="tech-name">WEBGL</span>
+                              <span class="tech-role">Custom Shaders</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/tauri/1C1A17" class="tech-icon" alt="Tauri" />
+                            <div class="badge-text">
+                              <span class="tech-name">TAURI V2</span>
+                              <span class="tech-role">Native Desktop</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/opengl/1C1A17" class="tech-icon" alt="GLSL" />
+                            <div class="badge-text">
+                              <span class="tech-name">GLSL</span>
+                              <span class="tech-role">Noise Algorithms</span>
+                            </div>
+                          </div>
+                          <div class="tech-badge">
+                            <img src="https://cdn.simpleicons.org/audacity/1C1A17" class="tech-icon" alt="Howler" />
+                            <div class="badge-text">
+                              <span class="tech-name">HOWLER</span>
+                              <span class="tech-role">Tactile Audio</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="back-quote" data-atropos-offset="2">
+                          "Code as an artistic craft. Bridging mathematical shader precision with emotional resonance."
+                        </div>
+
+                        <div class="card-flip-btn back-flip-btn" data-atropos-offset="4">
+                          <span>RETURN TO FOLIO</span>
+                          <span class="flip-arrow">←</span>
+                        </div>
+                      </div>
+
+                      <div class="card-footer" data-atropos-offset="2">
+                        <div class="card-barcode barcode-ivory"></div>
+                        <span class="card-serial">SPECIMEN // FOLIO 03</span>
+                        <span class="card-stamp stamp-ivory">REV. C</span>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- /#deck-stage -->
+      </div> <!-- /.deck-wrapper -->
+    </section>
+
+  </main>
+
+  <!-- 5. The Colophon (Exit / Contact) -->
+  <footer class="zine-footer">
+    <div class="footer-top">
+      <p class="footer-subtext">HAVE AN IMPOSSIBLE IDEA?</p>
+      <h2 class="footer-title">Let's build<br/>something <span>timeless</span></h2>
+    </div>
+    
+    <div class="footer-bottom-grid">
+      <div class="footer-col colophon">
+        <p class="colophon-name">AKSHAT RAWAT</p>
+        <p class="colophon-role">Curious Learner</p>
+        <p class="colophon-copy">© 2026 · ALL RIGHTS RESERVED</p>
+        <div class="colophon-actions">
+          <button id="back-to-top-btn" class="footer-nav-btn" type="button">↑ BACK TO TOP</button>
+          <button id="replay-loader-btn" class="footer-nav-btn secondary-btn" type="button" title="Replay intro animation">↺ INTRO</button>
+        </div>
+      </div>
+      
+      <div class="footer-col social-grid" aria-label="Social Links">
+        <div class="social-dock">
+          <a href="https://github.com/akshatrawat095" target="_blank" class="footer-social-token" title="GitHub" aria-label="GitHub Profile">
+            <img src="https://cdn.simpleicons.org/github/F7F3EB" alt="Github" class="social-icon" />
+            <span class="social-tooltip">GITHUB ↗</span>
+          </a>
+          <a href="https://x.com/AkshatRawat20" target="_blank" class="footer-social-token" title="X (formerly Twitter)" aria-label="X (formerly Twitter) Profile">
+            <img src="https://cdn.simpleicons.org/x/F7F3EB" alt="X" class="social-icon" />
+            <span class="social-tooltip">X (FORMERLY TWITTER) ↗</span>
+          </a>
+          <a href="https://instagram.com/error_on_first_tri3" target="_blank" class="footer-social-token" title="Instagram" aria-label="Instagram Profile">
+            <img src="https://cdn.simpleicons.org/instagram/F7F3EB" alt="Instagram" class="social-icon" />
+            <span class="social-tooltip">INSTAGRAM ↗</span>
+          </a>
+        </div>
+      </div>
+      
+      <div class="footer-col contact-col">
+        <div class="dispatch-contact-card">
+          <div class="dispatch-trigger-row">
+            <button type="button" id="copy-email-dispatch-btn" class="footer-dispatch-btn" aria-label="Copy direct contact dispatch">
+              <span class="btn-top-note">⌖ CLICK TO STAMP &amp; COPY DISPATCH</span>
+              <span class="btn-headline">
+                <span class="btn-email-text">START A CONVERSATION</span>
+                <span class="btn-stamp-icon">→</span>
+              </span>
+            </button>
+            <a href="mailto:acro96969@gmail.com" class="dispatch-mailto-link" title="Open mail client directly" aria-label="Open default mail client">
+              <span>MAIL ↗</span>
+            </a>
+          </div>
+
+          <!-- Dynamic Stamp Canvas / Overlay Target (Idea B) -->
+          <div id="footer-stamp-target" class="footer-stamp-target" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Detail Overlay (Hidden by default) -->
+  <div id="project-detail-overlay" class="bg-ivory">
+    <div class="overlay-nav border-bottom">
+      <span class="overlay-title">PROJECT DETAILS</span>
+      <button class="close-btn text-orange">CLOSE (ESC)</button>
+    </div>
+    <div class="overlay-content" id="overlay-content">
+      <!-- Injected via JS -->
+    </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
