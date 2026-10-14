@@ -1,265 +1,137 @@
 <div align="center">
 
-# ✦ A K S H A T &nbsp; R A W A T ✦
-### *Selected Works & Digital Architecture // Folio Edition*
+# Akshat Rawat
+### *Creative Developer & Digital Architect*
 
-[![Live Domain](https://img.shields.io/badge/LIVE%20TRANSMISSION-akshatrawat.is--a.dev-d4af37?style=for-the-badge&logo=vercel&logoColor=white)](https://akshatrawat.is-a.dev)
-[![Vite](https://img.shields.io/badge/VITE-8.3-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev)
-[![GSAP 3](https://img.shields.io/badge/GSAP-3.15-0AE448?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com)
-[![Three.js](https://img.shields.io/badge/THREE.JS-0.186-000000?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org)
-[![Vanilla Craft](https://img.shields.io/badge/CSS-ZERO%20FRAMEWORKS-F58233?style=for-the-badge&logo=css3&logoColor=white)](https://akshatrawat.is-a.dev)
-
-<br/>
-
-```
-╔═══════════════════════════════════════════════════════════════════════════════════╗
-║   SPECIMEN TYPE   ::  ARCHIVAL EDITORIAL ZINE & SPATIAL INTERACTION RUNTIME      ║
-║   AUTHOR          ::  AKSHAT RAWAT (CREATIVE DEVELOPER & ARCHITECT)             ║
-║   CORE STATUS     ::  PRODUCTION [200 OK] · ZERO TAILWIND BLOAT · 120 FPS RAF     ║
-║   LIVE DEPLOYMENT ::  https://akshatrawat.is-a.dev                                ║
-╚═══════════════════════════════════════════════════════════════════════════════════╝
-```
+<p align="center">
+  <a href="https://akshatrawat.is-a.dev">
+    <img src="https://img.shields.io/badge/LIVE%20EXPERIENCE-akshatrawat.is--a.dev-d4af37?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Experience" />
+  </a>
+  <a href="https://vitejs.dev">
+    <img src="https://img.shields.io/badge/VITE-8.3-646CFF?style=for-the-badge&logo=vite&logoColor=white" alt="Vite" />
+  </a>
+  <a href="https://greensock.com">
+    <img src="https://img.shields.io/badge/GSAP-3.15-0AE448?style=for-the-badge&logo=greensock&logoColor=white" alt="GSAP" />
+  </a>
+  <a href="https://threejs.org">
+    <img src="https://img.shields.io/badge/THREE.JS-WEBGL-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js" />
+  </a>
+  <a href="https://akshatrawat.is-a.dev">
+    <img src="https://img.shields.io/badge/VANILLA%20CSS-ZERO%20FRAMEWORKS-F58233?style=for-the-badge&logo=css3&logoColor=white" alt="Vanilla CSS" />
+  </a>
+</p>
 
 <p align="center">
   <b>"Where bespoke editorial typography meets physical computing in the browser."</b><br/>
-  <i>An archival, tactile portfolio exploring digital craft, systems architecture, and physical-digital interactions.</i>
+  <i>An archival, tactile digital folio exploring computational craft, physical-digital interactions, and bespoke design systems.</i>
 </p>
 
-[Explore Live Folio ↗](https://akshatrawat.is-a.dev) • [Featured Systems](#-featured-systems-matrix) • [Architecture](#-runtime-architecture) • [Micro-Interactions](#-micro-interaction-dossier) • [Installation](#-local-transmission)
-
----
+<p align="center">
+  <a href="https://akshatrawat.is-a.dev"><b>Explore Live Website ↗</b></a> &nbsp;•&nbsp;
+  <a href="#-selected-works"><b>Selected Works</b></a> &nbsp;•&nbsp;
+  <a href="#-the-experience--digital-craft"><b>Digital Craft</b></a> &nbsp;•&nbsp;
+  <a href="#-technology-matrix"><b>Technology Matrix</b></a>
+</p>
 
 </div>
 
-<br/>
+---
 
-## 🧭 Navigation Index
+### ✦ The Experience & Digital Craft
 
-```
-folio://2026/
- ├── 01. RUNTIME ARCHITECTURE ........ [System pipeline & dataflow]
- ├── 02. MICRO-INTERACTION DOSSIER ... [Incision loader, Web Audio, kinetic physics]
- ├── 03. FEATURED SYSTEMS MATRIX ..... [Linkit & Compress I/O architecture]
- ├── 04. THE TECHNOLOGY MATRIX ....... [Hardware, WASM, crypto, & shaders]
- ├── 05. BENCHMARKS & PHILOSOPHY ..... [Zero-bloat engineering manifesto]
- └── 06. LOCAL TRANSMISSION .......... [CLI boot sequence & preview]
-```
+- **⚡ Architectural Incision Loader**  
+  A custom dual-curtain shutter reveal splitting at `50.5vw` with sub-pixel overlap to eliminate light bleed, coordinated with a live telemetry counter (`000` $\rightarrow$ `100`) and laser incision flare. Replayable on-demand from the folio footer.
+
+- **📖 Editorial Zine Identity**  
+  Tactile paper tones paired with high-contrast editorial serifs (*Instrument Serif*, *Cormorant Garamond*, *Playfair Display*). Features bidirectional interactive marginalia notes that spring into focus when hovering corresponding editorial passages.
+
+- **🃏 Kinetic 3D Deck & Liquid Cards**  
+  Spatial pointer-tracking parallax cards with calculated specular foil light sweep reflections, spring inertia easing, and expandable dual-state technical dossiers.
+
+- **🔊 Web Audio API Acoustic Engine**  
+  Zero static MP3 audio files. Every haptic click is synthesized on-the-fly in browser memory using dual-oscillator sound waves (an 850Hz $\rightarrow$ 80Hz typewriter latch snap coupled with a 140Hz $\rightarrow$ 32Hz deep ink-press thud).
+
+- **🌱 Circadian Atmosphere**  
+  Floating organic dust particles, dynamic procedural botanical sketches, and ambient tones harmonized with real-world time-of-day.
 
 ---
 
-## ⚡ Runtime Architecture
-
-The portfolio functions as an **analogue-digital hybrid engine**. Instead of generic utility cascades, rendering is broken into five decoupled interaction layers:
-
-```
-                            [ HTTP GET :: https://akshatrawat.is-a.dev ]
-                                                │
-                                                ▼
-     ┌─────────────────────────────────────────────────────────────────────────────────────┐
-     │ 01. ARCHITECTURAL INCISION LAYER                                                    │
-     │     Dual-curtain mechanical shutter reveal (50.5vw split)                           │
-     │     High-speed live telemetry increment (000 → 100) with ember filament flare       │
-     └──────────────────────────────────────────┬──────────────────────────────────────────┘
-                                                │
-                                                ▼
-     ┌─────────────────────────────────────────────────────────────────────────────────────┐
-     │ 02. EDITORIAL ZINE SURFACE (DOM)                                                    │
-     │     • Typography: Instrument Serif, Cormorant Garamond, Bebas Neue, Inter          │
-     │     • Micro-Texture: Bespoke warm archival paper (#FDFBF7) & ink bleed              │
-     │     • Dynamic Marginalia: Bidirectional hover linkage between prose & margin notes │
-     └─────────────────────┬─────────────────────────────────────────┬─────────────────────┘
-                           │                                         │
-                           ▼                                         ▼
-     ┌───────────────────────────────────┐     ┌───────────────────────────────────────────┐
-     │ 03. SPATIAL KINETIC DECK          │     │ 04. TACTILE AUDIO SYNTHESIZER             │
-     │     • Multi-axis pointer parallax │     │     • Web Audio API Dual Oscillator       │
-     │     • Specular foil light sweeps  │     │     • 850Hz → 80Hz mechanical latch snap  │
-     │     • Spring inertia easing       │     │     • 140Hz → 32Hz deep ink-press thud    │
-     └─────────────────────┬─────────────┘     └─────────────────────┬─────────────────────┘
-                           │                                         │
-                           └────────────────────┬────────────────────┘
-                                                │
-                                                ▼
-     ┌─────────────────────────────────────────────────────────────────────────────────────┐
-     │ 05. EDGE TELEMETRY & DISPATCH                                                       │
-     │     • Realtime GitHub Releases asset polling (Compress I/O live download metrics)   │
-     │     • Base64 client-side email dispatch with haptic verification ink stamp          │
-     └─────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 🔬 Micro-Interaction Dossier
-
-<details open>
-<summary><b>1. Architectural Incision Shutter</b> <i>(LineRevealLoader.js)</i></summary>
-
-<br/>
-
-The boot sequence departs from conventional spinning loaders. Two monolithic curtain slabs (`.curtain-left`, `.curtain-right`) split the viewport at `50.5vw` with an intentional sub-pixel overlap to eliminate light leakage.
-* **Laser Incision Line**: An animated center track (`#loader-incision-track`) cuts downward across the page.
-* **Telemetry Gauge**: An authentic odometer counter (`000` to `100`) runs parallel with the incision cut.
-* **Replay Capability**: Users can re-trigger the incision choreography directly from the footer telemetry controls.
-
-</details>
-
-<details open>
-<summary><b>2. Web Audio Mechanical Synthesizer</b> <i>(Authentic Sound Design)</i></summary>
-
-<br/>
-
-Zero MP3 audio bloat. Every tactile audio event is synthesized **on-the-fly via the Web Audio API**:
-
-```javascript
-// Dual-stage physical sound synthesis
-const snapOsc = ctx.createOscillator();   // Typewriter Latch (Triangle wave: 850Hz -> 80Hz in 45ms)
-const thudOsc = ctx.createOscillator();   // Ink-Press Thud   (Sine wave:     140Hz -> 32Hz in 120ms)
-```
-
-Clicking the **"Request Dispatch"** button fires this dual acoustic impulse while stamping an authentic editorial wax seal into the DOM:
-```
-✦ SPECIMEN // FOLIO · VERIFIED TRANSMISSION · READY TO COMPOSE ✦
-```
-
-</details>
-
-<details open>
-<summary><b>3. Bidirectional Editorial Marginalia</b> <i>(Interactive Zine Reading)</i></summary>
-
-<br/>
-
-Reading editorial prose triggers spatial interaction. Hovering over any `.margin-highlight` text instantly locates, highlights, and scales its corresponding `.editorial-margin-card` in the right gutter with a spring easing curve (`back.out(2)`), bridging historical book design with modern web ergonomics.
-
-</details>
-
----
-
-## 💼 Featured Systems Matrix
+### 💼 Selected Works
 
 <table>
-  <thead>
-    <tr>
-      <th width="30%">PROJECT SPECIMEN</th>
-      <th width="45%">SYSTEM ARCHITECTURE & CAPABILITIES</th>
-      <th width="25%">CORE TECHNOLOGIES</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-        <b>LINKIT</b><br/>
-        <i>Creator Profiles Reimagined at the Edge</i><br/><br/>
-        <a href="https://linkit-tan.vercel.app/"><b>Launch Platform ↗</b></a>
-      </td>
-      <td>
-        • <b>Studio & Design Engine</b>: 60+ CSS-variable driven themes with spatial stickers and liquid-glass filters.<br/>
-        • <b>Zero-Trust Vault</b>: Hardware-accelerated <code>AES-256-GCM</code> encapsulated by Post-Quantum <b>ML-KEM (Kyber)</b> lattice cryptography.<br/>
-        • <b>ZK-Auth</b>: Zero-Knowledge proofs powered by <code>snarkjs</code> and biometric FIDO2 WebAuthn.
-      </td>
-      <td>
-        <code>React 19</code><br/>
-        <code>WebGL Shaders</code><br/>
-        <code>Post-Quantum Kyber</code><br/>
-        <code>Supabase</code><br/>
-        <code>Vercel Edge</code>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <b>COMPRESS I/O</b><br/>
-        <i>Offline Hardware-Accelerated Media Engine</i><br/><br/>
-        <a href="https://github.com/akshatrawat095/compress-io/releases"><b>Download Releases ↓</b></a>
-      </td>
-      <td>
-        • <b>Hybrid Core</b>: CPU reads + GPU write pipelines processing 8K video without memory exhaustion.<br/>
-        • <b>Silicon Auto-Detection</b>: Native support for NVIDIA NVENC, AMD AMF, Intel QuickSync, and Apple VideoToolbox.<br/>
-        • <b>100% Air-Gapped</b>: Zero cloud leaks, verified SHA-256 checksums, and Rust WASM isolation.
-      </td>
-      <td>
-        <code>Rust</code><br/>
-        <code>Tauri v2</code><br/>
-        <code>Hardware FFmpeg</code><br/>
-        <code>React 19</code><br/>
-        <code>NVENC / Metal</code>
-      </td>
-    </tr>
-  </tbody>
+  <tr>
+    <td width="50%" valign="top">
+      <h3>LINKIT</h3>
+      <p><i>Creator Profiles, Reimagined at the Edge</i></p>
+      <p>A dynamic, high-performance canvas transforming link aggregation into a personalized creative ritual.</p>
+      <ul>
+        <li><b>Studio Engine</b>: Fluid drag layouts, liquid-glass filters, and 60+ CSS token themes.</li>
+        <li><b>Zero-Trust Vault</b>: Hardware-accelerated <code>AES-256-GCM</code> encapsulated by Post-Quantum <b>ML-KEM (Kyber)</b> lattice cryptography.</li>
+        <li><b>ZK-Auth</b>: Biometric WebAuthn passkeys and Zero-Knowledge proofs via <code>snarkjs</code>.</li>
+      </ul>
+      <p>
+        <a href="https://linkit-tan.vercel.app/"><b>Launch Platform ↗</b></a> &nbsp;•&nbsp; 
+        <a href="https://github.com/akshatrawat095"><b>Source Repo ↗</b></a>
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3>COMPRESS I/O</h3>
+      <p><i>Offline Hardware-Accelerated Media Suite</i></p>
+      <p>An ultra-premium, local-first desktop application engineered for extreme performance and absolute privacy.</p>
+      <ul>
+        <li><b>GPU Acceleration</b>: Automatic silicon hijacking for <b>NVIDIA NVENC</b>, <b>AMD AMF</b>, <b>Intel QuickSync</b>, and <b>Apple VideoToolbox</b>.</li>
+        <li><b>Hybrid Pipeline</b>: CPU reads + GPU writes capable of processing 8K video streams without memory exhaustion.</li>
+        <li><b>Air-Gapped Privacy</b>: 100% offline, zero network transmissions, and verified SHA-256 checksums.</li>
+      </ul>
+      <p>
+        <a href="https://github.com/akshatrawat095/compress-io/releases"><b>Download Releases ↓</b></a> &nbsp;•&nbsp; 
+        <a href="https://github.com/akshatrawat095/compress-io"><b>Source Repo ↗</b></a>
+      </p>
+    </td>
+  </tr>
 </table>
 
 ---
 
-## 🛠 The Technology Matrix
+### ⚙️ Technology Matrix
 
-<div align="center">
-
-| Client & Presentation | Systems & Desktop | Cryptography & Security | Cloud & Infrastructure |
-| :---: | :---: | :---: | :---: |
-| ![React](https://img.shields.io/badge/React_19-20232A?style=flat-square&logo=react&logoColor=61DAFB) | ![Rust](https://img.shields.io/badge/Rust-000000?style=flat-square&logo=rust&logoColor=white) | ![AES](https://img.shields.io/badge/AES--256--GCM-Hardware-1C1A17?style=flat-square) | ![Vercel](https://img.shields.io/badge/Vercel_Edge-000000?style=flat-square&logo=vercel&logoColor=white) |
-| ![Vite](https://img.shields.io/badge/Vite_8-646CFF?style=flat-square&logo=vite&logoColor=white) | ![Tauri](https://img.shields.io/badge/Tauri_v2-24C8DB?style=flat-square&logo=tauri&logoColor=white) | ![Post Quantum](https://img.shields.io/badge/ML--KEM-Kyber_Lattice-D4AF37?style=flat-square) | ![Cloudflare](https://img.shields.io/badge/Cloudflare_DNS-F38020?style=flat-square&logo=cloudflare&logoColor=white) |
-| ![GSAP](https://img.shields.io/badge/GSAP_3-0AE448?style=flat-square&logo=greensock&logoColor=white) | ![WASM](https://img.shields.io/badge/WebAssembly-654FF0?style=flat-square&logo=webassembly&logoColor=white) | ![ZK](https://img.shields.io/badge/snarkjs-Zero_Knowledge-4B32C3?style=flat-square) | ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white) |
-| ![Three.js](https://img.shields.io/badge/Three.js-WebGL-000000?style=flat-square&logo=three.js&logoColor=white) | ![FFmpeg](https://img.shields.io/badge/FFmpeg-Hardware_GPU-007808?style=flat-square&logo=ffmpeg&logoColor=white) | ![FIDO2](https://img.shields.io/badge/FIDO2-WebAuthn-2B579A?style=flat-square) | ![Upstash](https://img.shields.io/badge/Upstash-Redis_Cache-00E9A3?style=flat-square&logo=redis&logoColor=white) |
-
-</div>
+| Domain | Specimen Runtimes & Protocols |
+| :--- | :--- |
+| **Frontend Architecture** | `JavaScript (ES Modules)` • `Vite 8` • `GSAP 3 (ScrollTrigger)` • `Three.js (WebGL Shaders)` • `Atropos 3D` |
+| **Styling & Design System** | `Vanilla CSS3` • Custom Design Tokens • Typography (*Instrument Serif*, *Bebas Neue*, *Inter*) • Zero Frameworks |
+| **Systems & Native Core** | `Rust` • `Tauri v2` • `WebAssembly (WASM)` • `Hardware FFmpeg` |
+| **Security & Cryptography** | `Web Crypto API (AES-256-GCM)` • `Post-Quantum ML-KEM (Kyber)` • `snarkjs (ZK Proofs)` • `FIDO2 WebAuthn` |
+| **Edge & Infrastructure** | `Vercel Edge` • `Cloudflare DNS` • `Supabase` • `Upstash Redis` |
 
 ---
 
-## 📊 Engineering Principles & Benchmarks
+### 📊 Performance & Craft Philosophy
 
-| Metric / Attribute | Standard Industry Template | Akshat's Portfolio Architecture |
+| Discipline | Standard Industry Template | Akshat's Architecture |
 | :--- | :--- | :--- |
-| **Styling Strategy** | Bloated utility framework (300KB+ CSS) | **0% CSS Frameworks** — Pure Vanilla CSS Design Tokens |
-| **Audio Pipeline** | Heavy static MP3 assets (1MB - 5MB) | **0.0 KB** — 100% Real-time Web Audio API frequency synthesis |
-| **Animation Choreography** | CPU-bound CSS transforms | **Hardware-accelerated RAF pipeline** with GSAP ScrollTrigger |
-| **Frame Stability** | Frequent micro-stutters | **Pinned 120 FPS** on high-refresh ProMotion & Gaming displays |
-| **Domain Architecture** | Generic free tier subdomains | **Custom Verified Edge Domain** (`akshatrawat.is-a.dev`) |
-
----
-
-## 💻 Local Transmission
-
-Clone the repository and experience the full development environment locally:
-
-```bash
-# 1. Acquire the repository
-git clone https://github.com/akshatrawat095/Portfolio.git
-
-# 2. Enter workspace
-cd Portfolio
-
-# 3. Install dependencies
-npm install
-
-# 4. Initiate the local development server (with HMR)
-npm run dev
-```
-
-The dev server will boot on `http://localhost:5173/`.
-
-### Production Assembly
-
-```bash
-# Compile and optimize asset graph
-npm run build
-
-# Preview optimized production bundle locally
-npm run preview
-```
+| **Styling** | 300KB+ Utility CSS framework bundle | **0 KB CSS Framework Bloat** — 100% Pure Vanilla CSS Design Tokens |
+| **Sound Synthesis** | 1MB - 5MB static MP3 audio files | **0.0 KB** — Real-time Web Audio API frequency oscillation |
+| **Frame Timing** | CPU-bound transforms with frame drops | **Pinned 120 FPS** hardware-accelerated RAF render loops |
+| **Deployment** | Unverified default subdomains | **Custom Verified Edge Domain** (`akshatrawat.is-a.dev`) |
 
 ---
 
 <div align="center">
 
-```
-  ┌─────────────────────────────────────────────────────────────┐
-  │   TRANSMISSION END  ::  VERIFIED FOLIO SIGNATURE             │
-  │   AKSHAT RAWAT      ::  acro96969@gmail.com                 │
-  │   DISPATCH PROTOCOL ::  HTTP/2.0 · TLS 1.3 · VERCEL EDGE    │
-  └─────────────────────────────────────────────────────────────┘
-```
+### Dispatch & Connections
 
-**Designed & Architected with pure aesthetic craft by [Akshat Rawat](https://akshatrawat.is-a.dev).**  
-*All selected works and design specimens © 2026. All rights reserved.*
+Interested in collaborating or discussing systems architecture?
 
-[Back to top ↑](#-akshat--rawat-)
+<p align="center">
+  <a href="https://akshatrawat.is-a.dev">
+    <img src="https://img.shields.io/badge/LIVE%20FOLIO-akshatrawat.is--a.dev-d4af37?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Folio" />
+  </a>
+  &nbsp;
+  <a href="https://github.com/akshatrawat095">
+    <img src="https://img.shields.io/badge/GITHUB-akshatrawat095-181717?style=for-the-badge&logo=github" alt="GitHub" />
+  </a>
+</p>
+
+<sub>© 2026 Akshat Rawat. Designed & architected with digital craft. All rights reserved.</sub>
 
 </div>
