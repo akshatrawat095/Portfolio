@@ -28,7 +28,7 @@
 
 <p align="center">
   <a href="https://akshatrawat.is-a.dev"><b>Explore Live Website ↗</b></a> &nbsp;•&nbsp;
-  <a href="#-selected-works"><b>Selected Works</b></a> &nbsp;•&nbsp;
+  <a href="#-featured-works"><b>Featured Works</b></a> &nbsp;•&nbsp;
   <a href="#-the-experience--digital-craft"><b>Digital Craft</b></a> &nbsp;•&nbsp;
   <a href="#-technology-matrix"><b>Technology Matrix</b></a>
 </p>
@@ -56,7 +56,7 @@
 
 ---
 
-### 💼 Selected Works
+### 💼 Featured Works
 
 <table>
   <tr>

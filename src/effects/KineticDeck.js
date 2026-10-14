@@ -55,7 +55,7 @@ export class KineticDeck {
           shadow: false,    // Refined tactile paper shadow in CSS
           rotateXMax: 9,
           rotateYMax: 9,
-          rotateTouch: true,
+          rotateTouch: 'scroll-y',
           duration: 380
         });
         this.atroposInstances.push(instance);
