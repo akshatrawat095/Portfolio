@@ -1,0 +1,6 @@
+# robots.txt for https://akshatrawat.is-a.dev
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://akshatrawat.is-a.dev/sitemap.xml
