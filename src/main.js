@@ -688,7 +688,7 @@ document.addEventListener("DOMContentLoaded", () => {
     y: 30, opacity: 0, duration: 1, stagger: 0.15, ease: 'power3.out', delay: 0.2
   });
 
-  // Idea B: Tactile Stamp Dispatch & Audio Synthesizer
+  // Tactile Stamp Dispatch & Audio Synthesizer
   function playTactileStampSound() {
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;

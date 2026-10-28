@@ -116,8 +116,8 @@ export class KineticDeck {
     // 1. Interface Card: Interactive Spring Coordinate Mesh
     this.initInterfaceCanvas();
 
-    // 2. Systems Card: Live Monospace IPC Telemetry Loop
-    this.initSystemsTelemetry();
+    // 2. Systems Card: Quantum Lattice & Zero-Trust Waveform
+    this.initSystemsCanvas();
 
     // 3. Craft Card: Procedural 3D Wireframe Polyhedron
     this.initCraftCanvas();
@@ -130,8 +130,9 @@ export class KineticDeck {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let width = (canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1));
-    let height = (canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1));
+    const dpr = window.devicePixelRatio || 1;
+    let width = (canvas.width = (canvas.offsetWidth || 240) * dpr);
+    let height = (canvas.height = (canvas.offsetHeight || 88) * dpr);
 
     let mouseX = width / 2;
     let mouseY = height / 2;
@@ -146,14 +147,13 @@ export class KineticDeck {
     if (card) {
       card.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
-        const dpr = window.devicePixelRatio || 1;
         mouseX = (e.clientX - rect.left) * dpr;
         mouseY = (e.clientY - rect.top) * dpr;
         isHovered = true;
 
         if (coordsEl) {
-          const normX = Math.round(((e.clientX - rect.left) / rect.width) * 100);
-          const normY = Math.round(((e.clientY - rect.top) / rect.height) * 100);
+          const normX = Math.round(((e.clientX - rect.left) / Math.max(1, rect.width)) * 100);
+          const normY = Math.round(((e.clientY - rect.top) / Math.max(1, rect.height)) * 100);
           coordsEl.textContent = `X: ${normX} · Y: ${normY}`;
         }
       }, { passive: true });
@@ -164,6 +164,15 @@ export class KineticDeck {
     }
 
     const drawInterface = () => {
+      if (canvas.offsetWidth > 0) {
+        const targetW = canvas.offsetWidth * dpr;
+        const targetH = canvas.offsetHeight * dpr;
+        if (canvas.width !== targetW || canvas.height !== targetH) {
+          width = canvas.width = targetW;
+          height = canvas.height = targetH;
+        }
+      }
+
       time += 0.03;
       ctx.clearRect(0, 0, width, height);
 
@@ -238,25 +247,124 @@ export class KineticDeck {
     drawInterface();
   }
 
-  // 2. Systems Terminal: Live IPC Telemetry
-  initSystemsTelemetry() {
+  // 2. Systems Canvas: Quantum Lattice & Zero-Trust Telemetry Waveform
+  initSystemsCanvas() {
+    const canvas = document.getElementById('canvas-systems');
     const ipcEl = document.getElementById('term-ipc');
-    const sysEl = document.getElementById('term-sys');
-    if (!ipcEl) return;
+    if (!canvas) return;
 
-    const latencies = ['0.07ms ACTIVE', '0.08ms ACTIVE', '0.06ms ACTIVE', '0.09ms ACTIVE', '0.05ms PEAK'];
-    const nodes = ['RUST NATIVE SILICON', 'ZERO-TRUST IPC', 'ML-KEM 768 LATTICE', 'WASM SUB-PROCESS'];
-    let count = 0;
+    const ctx = canvas.getContext('2d');
+    const dpr = window.devicePixelRatio || 1;
+    let width = (canvas.width = (canvas.offsetWidth || 240) * dpr);
+    let height = (canvas.height = (canvas.offsetHeight || 88) * dpr);
 
+    let time = 0;
+    let isHovered = false;
+    let mouseNormX = 0.5;
+
+    const card = canvas.closest('.specimen-card');
+    if (card) {
+      card.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouseNormX = Math.max(0, Math.min(1, (e.clientX - rect.left) / Math.max(1, rect.width)));
+        isHovered = true;
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', () => {
+        isHovered = false;
+        mouseNormX = 0.5;
+      });
+    }
+
+    // Telemetry text jitter
+    const latencies = ['0.07ms · 100% SECURE', '0.08ms · 100% SECURE', '0.06ms · 100% SECURE', '0.05ms PEAK', '0.09ms · AES-256'];
+    let jitterIdx = 0;
     const interval = setInterval(() => {
-      count++;
-      ipcEl.textContent = latencies[count % latencies.length];
-      if (count % 4 === 0 && sysEl) {
-        sysEl.textContent = nodes[(count / 4) % nodes.length];
-      }
-    }, 900);
-
+      jitterIdx = (jitterIdx + 1) % latencies.length;
+      if (ipcEl) ipcEl.textContent = latencies[jitterIdx];
+    }, 1100);
     this.systemsInterval = interval;
+
+    const drawSystems = () => {
+      if (canvas.offsetWidth > 0) {
+        const targetW = canvas.offsetWidth * dpr;
+        const targetH = canvas.offsetHeight * dpr;
+        if (canvas.width !== targetW || canvas.height !== targetH) {
+          width = canvas.width = targetW;
+          height = canvas.height = targetH;
+        }
+      }
+
+      time += isHovered ? 0.045 : 0.025;
+      ctx.clearRect(0, 0, width, height);
+
+      // Grid mesh with matrix dots
+      ctx.strokeStyle = 'rgba(39, 55, 12, 0.08)';
+      ctx.lineWidth = 1;
+      const stepX = width / 8;
+      const stepY = height / 4;
+      for (let x = stepX; x < width; x += stepX) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = stepY; y < height; y += stepY) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+
+      // Dual quantum lattice sine waves
+      const cy = height * 0.44;
+      const amplitude = height * (isHovered ? 0.28 : 0.22);
+      const freq = 0.022 + (isHovered ? mouseNormX * 0.015 : 0.005);
+
+      // Secondary shadow carrier wave
+      ctx.strokeStyle = 'rgba(120, 145, 25, 0.25)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      for (let x = 0; x <= width; x += 3) {
+        const y = cy + Math.sin(x * freq + time * 1.2) * (amplitude * 0.7);
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Primary active waveform
+      ctx.strokeStyle = '#587309';
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      for (let x = 0; x <= width; x += 3) {
+        const y = cy + Math.sin(x * freq + time * 1.8 + Math.cos(time * 0.5)) * amplitude;
+        if (x === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+
+      // Telemetry packet nodes traveling on the wave
+      const packetCount = 4;
+      for (let i = 0; i < packetCount; i++) {
+        const packetOffset = ((time * 30 + i * (width / packetCount)) % width);
+        const packetY = cy + Math.sin(packetOffset * freq + time * 1.8 + Math.cos(time * 0.5)) * amplitude;
+        
+        ctx.fillStyle = '#C0D72F';
+        ctx.beginPath();
+        ctx.arc(packetOffset, packetY, 3.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = '#384D12';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.arc(packetOffset, packetY, 5.5, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      this.systemsRafId = requestAnimationFrame(drawSystems);
+    };
+
+    drawSystems();
   }
 
   // 3. Craft Canvas: Procedural 3D Wireframe Polyhedron
@@ -265,8 +373,9 @@ export class KineticDeck {
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
-    let width = (canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1));
-    let height = (canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1));
+    const dpr = window.devicePixelRatio || 1;
+    let width = (canvas.width = (canvas.offsetWidth || 240) * dpr);
+    let height = (canvas.height = (canvas.offsetHeight || 88) * dpr);
 
     // 3D Octahedron vertices
     const vertices = [
@@ -294,8 +403,8 @@ export class KineticDeck {
     if (card) {
       card.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
-        const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-        const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        const nx = ((e.clientX - rect.left) / Math.max(1, rect.width) - 0.5) * 2;
+        const ny = ((e.clientY - rect.top) / Math.max(1, rect.height) - 0.5) * 2;
         rotSpeedY = 0.018 + nx * 0.04;
         rotSpeedX = 0.012 + ny * 0.03;
       }, { passive: true });
@@ -306,12 +415,28 @@ export class KineticDeck {
       });
     }
 
-    const scale = Math.min(width, height) * 0.35;
-    const cx = width / 2;
-    const cy = height / 2;
-
     const drawCraft = () => {
+      if (canvas.offsetWidth > 0) {
+        const targetW = canvas.offsetWidth * dpr;
+        const targetH = canvas.offsetHeight * dpr;
+        if (canvas.width !== targetW || canvas.height !== targetH) {
+          width = canvas.width = targetW;
+          height = canvas.height = targetH;
+        }
+      }
+
       ctx.clearRect(0, 0, width, height);
+
+      // Subtle background grid
+      ctx.strokeStyle = 'rgba(28, 26, 23, 0.05)';
+      ctx.lineWidth = 1;
+      const stepX = width / 6;
+      for (let x = stepX; x < width; x += stepX) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
 
       angleX += rotSpeedX;
       angleY += rotSpeedY;
@@ -320,6 +445,10 @@ export class KineticDeck {
       const sinX = Math.sin(angleX);
       const cosY = Math.cos(angleY);
       const sinY = Math.sin(angleY);
+
+      const scale = Math.min(width, height) * 0.38;
+      const cx = width / 2;
+      const cy = height * 0.46;
 
       // Rotate and project vertices to 2D
       const projected = vertices.map(v => {
@@ -343,8 +472,8 @@ export class KineticDeck {
       });
 
       // Draw wireframe edges
-      ctx.strokeStyle = 'rgba(28, 26, 23, 0.42)';
-      ctx.lineWidth = 1.2;
+      ctx.strokeStyle = 'rgba(28, 26, 23, 0.48)';
+      ctx.lineWidth = 1.3;
 
       edges.forEach(([i, j]) => {
         const p1 = projected[i];
@@ -355,16 +484,16 @@ export class KineticDeck {
         ctx.stroke();
       });
 
-      // Draw vertices with chartreuse & ivory accent
+      // Draw vertices with ivory & orange accents
       projected.forEach(p => {
         ctx.fillStyle = '#C85A17';
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 2.8, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 3.2, 0, Math.PI * 2);
         ctx.fill();
 
         ctx.fillStyle = '#FFFFFF';
         ctx.beginPath();
-        ctx.arc(p.x, p.y, 1.2, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
         ctx.fill();
       });
 

@@ -4,22 +4,22 @@
 
 @font-face {
   font-family: 'Vertaz Display';
-  src: url('/fonts/VertazDisplay.woff2') format('woff2');
+  src: url('/fonts/vertaz-display/VertazDisplay-Regular.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Bhelmora';
-  src: url('/fonts/Bhelmora.woff2') format('woff2');
+  src: url('/fonts/bhelmora/Bhelmora.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Young Romance';
-  src: url('/fonts/YoungRomance.woff2') format('woff2');
+  src: url('/fonts/young-romance/Young Romance.otf') format('opentype');
   font-display: swap;
 }
 @font-face {
   font-family: 'Bisten';
-  src: url('/fonts/Bisten.woff2') format('woff2');
+  src: url('/fonts/bisten/Bisten.otf') format('opentype');
   font-display: swap;
 }
 
@@ -30,10 +30,12 @@
   --pistachio: #C5D8B4;
   --chartreuse: #C0D72F;
   
-  --font-display-sans: 'Vertaz Display', 'Bebas Neue', sans-serif; 
+  --font-display-sans: 'Vertaz Display', 'Bebas Neue', 'Inter', sans-serif; 
   --font-display-serif: 'Bhelmora', 'Playfair Display', serif;
-  --font-script: 'Young Romance', 'Instrument Serif', serif;
-  --font-body: 'Bisten', 'Cormorant Garamond', serif;
+  --font-script: 'Young Romance', 'Instrument Serif', cursive;
+  --font-stamp: 'Bisten', 'Inter', sans-serif;
+  --font-body: 'Cormorant Garamond', 'Georgia', serif;
+  --font-accent: 'Instrument Serif', 'Playfair Display', serif;
   --font-ui: 'Inter', sans-serif;
   
   --border-ink: 1px solid var(--ink);
@@ -43,11 +45,12 @@
 html { scroll-behavior: smooth; }
 
 body {
+  font-synthesis: none;
   background-color: var(--ivory);
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 19px;
+  line-height: 1.7;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -99,18 +102,29 @@ body {
 }
 .elegant-line-1 {
   font-family: var(--font-display-serif);
-  font-size: clamp(4rem, 10vw, 8rem);
+  font-size: clamp(3.8rem, 8.5vw, 7.5rem);
   font-weight: 400; font-style: italic;
-  line-height: 1; letter-spacing: -1px;
+  line-height: 0.95; letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+  color: var(--ink);
 }
 .elegant-line-2 {
   font-family: var(--font-script);
-  font-size: clamp(5rem, 12vw, 10rem);
+  font-size: clamp(4.5rem, 10vw, 9rem);
   color: var(--orange);
-  line-height: 0.8; padding-left: 10vw;
+  line-height: 0.85;
+  margin-top: -0.22em;
+  padding-left: clamp(3rem, 7.5vw, 6.5rem);
+  position: relative;
+  z-index: 3;
+  /* Razor-sharp Ivory Knockout Halo: Turns text collision into intentional layered paper cutout */
+  -webkit-text-stroke: 4.5px var(--ivory);
+  paint-order: stroke fill;
+  filter: drop-shadow(0 2px 10px rgba(200, 90, 23, 0.12));
 }
 
-/* The AI Gulmohar Branch */
+/* Hero Botanical Branch */
 .hero-floral {
   position: absolute;
   top: -25%; right: -5%;
@@ -209,11 +223,13 @@ body {
 }
 
 .dispatch-script {
-  font-family: var(--font-script);
+  font-family: 'Young Romance', var(--font-script);
   font-style: normal;
+  font-weight: 400;
   color: var(--orange);
-  font-size: 1.22em;
-  padding: 0 0.2rem;
+  font-size: 1.08em;
+  letter-spacing: 1.2px;
+  padding: 0 0.15rem;
 }
 
 .dispatch-columns-grid {
@@ -261,20 +277,23 @@ body {
 
 .dispatch-col-title {
   font-family: var(--font-display-sans);
-  font-size: 2.1rem;
-  letter-spacing: 1px;
-  line-height: 1;
-  margin-bottom: 1rem;
+  font-size: 2.3rem;
+  letter-spacing: 1.8px;
+  line-height: 1.05;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.85rem;
   color: var(--ink);
 }
 
 .dispatch-col-body {
   font-family: var(--font-body);
-  font-size: 1.18rem;
-  line-height: 1.7;
+  font-size: 1.15rem;
+  line-height: 1.75;
   opacity: 0.9;
   margin: 0;
   position: relative;
+  letter-spacing: 0.2px;
 }
 
 /* --- Highlighting & Margin Annotation Elements --- */
@@ -372,12 +391,12 @@ body {
 
 .margin-card-scribble {
   font-family: var(--font-script);
-  font-size: 1.34rem;
-  line-height: 1.35;
+  font-size: 1.2rem;
+  line-height: 1.5;
   font-style: italic;
   color: var(--ink);
   margin: 0.5rem 0 0.8rem 0;
-  letter-spacing: 0.2px;
+  letter-spacing: 0.3px;
   opacity: 0.95;
 }
 
@@ -434,17 +453,18 @@ body {
 
 .dispatch-author-name {
   font-family: var(--font-display-sans);
-  font-size: 1.6rem;
-  letter-spacing: 1.5px;
+  font-size: 1.85rem;
+  letter-spacing: 2.2px;
   color: var(--ink);
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .dispatch-author-role {
-  font-family: var(--font-body);
-  font-size: 1rem;
+  font-family: var(--font-accent);
+  font-size: 1.15rem;
   font-style: italic;
-  opacity: 0.75;
+  opacity: 0.82;
+  letter-spacing: 0.3px;
 }
 
 .dispatch-pills-strip {
@@ -520,10 +540,10 @@ body {
 }
 
 .index-count {
-  font-family: var(--font-ui);
-  font-size: 12px;
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 13px;
   letter-spacing: 2px;
-  font-weight: 700;
+  font-weight: 400;
   color: var(--orange);
 }
 
@@ -632,10 +652,13 @@ body {
 }
 
 .proj-name {
-  font-family: var(--font-display-sans);
-  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
-  line-height: 0.9;
-  letter-spacing: 1px;
+  font-family: 'Vertaz Display', var(--font-display-sans);
+  font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: 3.5px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--ink);
   margin-bottom: 0.4rem;
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
@@ -646,9 +669,11 @@ body {
 
 .proj-desc {
   font-family: var(--font-body);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-style: italic;
   opacity: 0.75;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
   transition: color 0.3s ease, opacity 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
@@ -849,10 +874,11 @@ body {
 
 .broadsheet-sub {
   font-family: var(--font-body);
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.7;
   opacity: 0.85;
   max-width: 950px;
+  letter-spacing: 0.2px;
 }
 
 /* ─── INTERACTIVE BENCHMARK / SIMULATOR CARDS ─── */
@@ -910,10 +936,13 @@ body {
 }
 
 .sim-title {
-  font-family: var(--font-display-serif);
-  font-size: 1.45rem;
-  font-weight: 600;
+  font-family: var(--font-ui);
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.25px;
+  line-height: 1.25;
   color: var(--ink);
+  margin: 0;
 }
 
 .sim-meta-tag {
@@ -1220,9 +1249,10 @@ body {
 .col-body {
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.7;
   opacity: 0.85;
   margin: 0;
+  letter-spacing: 0.15px;
 }
 
 /* Broadsheet Technology Matrix Strip */
@@ -1552,7 +1582,7 @@ body {
   position: relative;
   z-index: 10;
   width: 100%;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 0 0 auto;
   display: flex;
   flex-direction: column;
@@ -1581,11 +1611,11 @@ body {
 }
 
 .deck-header .index-count {
-  font-family: var(--font-ui);
-  font-size: 10px;
-  font-weight: 600;
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 12px;
+  font-weight: 400;
   letter-spacing: 2px;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 
 .deck-title {
@@ -1615,16 +1645,16 @@ body {
   display: flex;
   justify-content: flex-end;
   align-items: stretch;
-  gap: 1.15rem;
+  gap: 1.25rem;
 }
 
 /* Individual Specimen Card (Atropos 3D Rig) */
 .specimen-card {
   position: relative;
-  width: 278px;
-  min-height: 440px;
-  height: 445px;
-  flex: 0 0 278px;
+  width: 300px;
+  min-height: 540px;
+  height: 540px;
+  flex: 0 0 300px;
   user-select: none;
   cursor: pointer;
   opacity: 1 !important;
@@ -1651,7 +1681,7 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  min-height: 445px;
+  min-height: 540px;
   transform-style: preserve-3d;
   transition: transform 0.75s cubic-bezier(0.34, 1.35, 0.64, 1);
 }
@@ -1726,12 +1756,19 @@ body {
   letter-spacing: 2.2px;
 }
 
+.card-vol {
+  font-family: var(--font-stamp);
+  font-size: 11.5px;
+  letter-spacing: 2px;
+}
+
 .card-status {
-  padding: 3px 9px;
+  padding: 3.5px 9px;
   border-radius: 999px;
-  font-size: 8px;
-  letter-spacing: 1.2px;
-  font-weight: 700;
+  font-family: var(--font-stamp);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  font-weight: 400;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -1751,7 +1788,9 @@ body {
 .card-micro-stage {
   position: relative;
   width: 100%;
-  height: 94px;
+  height: 88px;
+  min-height: 88px;
+  flex: 0 0 88px;
   background: rgba(28, 26, 23, 0.025);
   border: 1px solid rgba(28, 26, 23, 0.09);
   border-radius: 6px;
@@ -1838,12 +1877,12 @@ body {
 
 .card-title {
   font-family: var(--font-display-serif);
-  font-size: 2.35rem;
+  font-size: 2.2rem;
   font-style: italic;
   font-weight: 400;
-  line-height: 0.95;
-  margin-bottom: 0.2rem;
-  letter-spacing: -0.6px;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.4px;
 }
 
 .title-accent {
@@ -1852,12 +1891,14 @@ body {
 }
 
 .card-discipline-sub {
-  font-family: var(--font-body);
-  font-size: 0.98rem;
+  font-family: var(--font-display-serif);
+  font-size: 1.05rem;
   font-style: italic;
-  opacity: 0.72;
-  margin-bottom: 0.5rem;
-  line-height: 1.2;
+  font-weight: 400;
+  opacity: 0.82;
+  margin-bottom: 0.45rem;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
 }
 
 .card-ornament-rule {
@@ -1868,26 +1909,26 @@ body {
 
 .card-summary {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   line-height: 1.5;
-  margin-bottom: 0.9rem;
+  margin-bottom: 0.65rem;
   opacity: 0.88;
-  flex: 1;
+  letter-spacing: 0.15px;
 }
 
 .card-highlights {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin-bottom: 0.95rem;
+  gap: 4px;
+  margin-bottom: 0.85rem;
 }
 
 .highlight-tag {
   font-family: var(--font-ui);
-  font-size: 8px;
+  font-size: 7.8px;
   font-weight: 700;
-  letter-spacing: 1.2px;
-  padding: 3.5px 8.5px;
+  letter-spacing: 1.1px;
+  padding: 3px 8px;
   border-radius: 999px;
   transition: all 0.2s ease;
 }
@@ -1896,18 +1937,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8.5px 12px;
-  border-radius: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
   font-family: var(--font-ui);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 1.6px;
+  font-size: 8.2px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s ease;
+  margin-top: auto;
+  margin-bottom: 0.15rem;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .flip-arrow {
-  font-size: 13px;
+  font-size: 12px;
   transition: transform 0.3s ease;
 }
 
@@ -1920,31 +1964,39 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   padding: 0.75rem 1.15rem;
   border-top: 1px solid rgba(28, 26, 23, 0.08);
   font-family: var(--font-ui);
-  font-size: 8.5px;
+  font-size: 8.2px;
   font-weight: 700;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.5px;
 }
 
 .card-barcode {
-  height: 10px;
-  width: 44px;
+  height: 9px;
+  width: 32px;
+  flex-shrink: 0;
   opacity: 0.7;
 }
 
 .card-serial {
   opacity: 0.65;
-  letter-spacing: 1.8px;
+  letter-spacing: 1.4px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .card-stamp {
-  padding: 2px 7px;
+  font-family: var(--font-stamp);
+  padding: 2px 7.5px;
   border-radius: 4px;
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 1.2px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  line-height: 1.15;
   transform: none;
 }
 
@@ -2442,13 +2494,14 @@ body {
 .back-quote {
   font-family: var(--font-body);
   font-size: 0.88rem;
-  line-height: 1.4;
+  line-height: 1.55;
   opacity: 0.85;
   font-style: italic;
   margin-top: auto;
   padding-top: 0.4rem;
   border-top: 1px dashed rgba(28, 26, 23, 0.18);
   color: var(--ink);
+  letter-spacing: 0.15px;
 }
 
 .back-flip-btn {
@@ -2518,7 +2571,12 @@ body {
   font-family: var(--font-display-serif); font-size: clamp(4rem, 10vw, 12rem); font-style: italic; line-height: 0.9; letter-spacing: -2px; margin: 0;
 }
 .footer-title span {
-  font-family: var(--font-display-sans); font-style: normal; text-transform: uppercase; letter-spacing: 2px;
+  font-family: 'Vertaz Display', var(--font-display-sans);
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 6px;
+  font-weight: 400;
+  font-size: 0.86em;
 }
 .footer-bottom-grid {
   border-top: 1px solid rgba(247, 243, 235, 0.2); padding-top: 2rem;
@@ -2674,7 +2732,7 @@ body {
   transform: translateX(-50%) translateY(0);
 }
 
-/* Idea B: Tactile Ink Stamp Dispatch Trigger */
+/* Tactile Ink Stamp Dispatch Trigger */
 .contact-col {
   align-items: flex-end;
 }
@@ -2774,7 +2832,7 @@ body {
   box-shadow: 0 6px 18px rgba(200, 90, 23, 0.35);
 }
 
-/* Dynamic Ink Stamp (Idea B Effect) */
+/* Dynamic Ink Stamp Effect */
 .footer-stamp-target {
   position: absolute;
   top: -125px;
@@ -2872,7 +2930,15 @@ body {
 .overlay-content {
   padding: 6rem 4rem; max-width: 1000px; margin: 0 auto;
 }
-.overlay-hero-title { font-family: var(--font-display-sans); font-size: 6rem; line-height: 0.9; margin-bottom: 2rem; }
+.overlay-hero-title {
+  font-family: 'Vertaz Display', var(--font-display-sans);
+  font-size: clamp(3.2rem, 7vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
 .overlay-img { width: 100%; aspect-ratio: 16/9; background: #ddd; border: 2px solid var(--ink); margin-bottom: 4rem; }
 .overlay-text-body p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem; }
 
@@ -3160,7 +3226,8 @@ body {
   opacity: 0.75;
   font-style: italic;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.6;
+  letter-spacing: 0.2px;
 }
 
 .dispatch-footer-buttons {
@@ -3239,8 +3306,11 @@ body {
     font-size: clamp(2.8rem, 11vw, 5.5rem);
   }
   .elegant-line-2 {
-    font-size: clamp(3.4rem, 14vw, 7rem);
-    padding-left: 1rem;
+    font-size: clamp(3.2rem, 13vw, 6.5rem);
+    padding-left: 1.5rem;
+    margin-top: -0.15em;
+    -webkit-text-stroke: 3.5px var(--ivory);
+    paint-order: stroke fill;
   }
   .hero-floral {
     width: 65%;
@@ -3463,8 +3533,11 @@ body {
     font-size: clamp(2.4rem, 10vw, 4.2rem);
   }
   .elegant-line-2 {
-    font-size: clamp(3rem, 13vw, 5.5rem);
-    padding-left: 0.5rem;
+    font-size: clamp(2.8rem, 12vw, 5rem);
+    padding-left: 0.8rem;
+    margin-top: -0.12em;
+    -webkit-text-stroke: 3px var(--ivory);
+    paint-order: stroke fill;
   }
   .hero-floral {
     width: 75%;
