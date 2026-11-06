@@ -805,6 +805,88 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Live Hardware RTC Silicon Simulation & Diff Inspection
+  function initKernelRTC() {
+    const timestampEl = document.getElementById('kernel-live-timestamp');
+    const epochEl = document.getElementById('kernel-unix-epoch');
+    const probeCmd = document.getElementById('kernel-probe-cmd');
+    const bufferMeta = document.getElementById('kernel-buffer-meta');
+    const drawer = document.getElementById('kernel-diff-drawer');
+    const drawerContent = document.getElementById('kernel-drawer-content');
+
+    if (!timestampEl) return;
+
+    let activeHunk = 'ts'; // 'ts' (timestamp0) or 'cnt' (timestamp0_count)
+
+    function updateClock() {
+      const now = new Date();
+      const year = now.getUTCFullYear();
+      const month = String(now.getUTCMonth() + 1).padStart(2, '0');
+      const day = String(now.getUTCDate()).padStart(2, '0');
+      const hours = String(now.getUTCHours()).padStart(2, '0');
+      const mins = String(now.getUTCMinutes()).padStart(2, '0');
+      const secs = String(now.getUTCSeconds()).padStart(2, '0');
+
+      const unixEpoch = Math.floor(now.getTime() / 1000);
+      if (epochEl) epochEl.textContent = `UNIX: ${unixEpoch}`;
+
+      if (activeHunk === 'ts') {
+        timestampEl.textContent = `"${year}-${month}-${day}T${hours}:${mins}:${secs}\n"`;
+      }
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // Setup hover listeners for diff lines across both hunks
+    const interactiveRows = document.querySelectorAll('.diff-interactive-row');
+    interactiveRows.forEach((row) => {
+      row.addEventListener('mouseenter', () => {
+        const hunk = row.getAttribute('data-hunk');
+        const action = row.getAttribute('data-action');
+        activeHunk = hunk;
+
+        if (hunk === 'ts') {
+          if (probeCmd) probeCmd.textContent = '$ cat /sys/class/rtc/rtc0/device/timestamp0';
+          if (bufferMeta) bufferMeta.innerHTML = '21 BYTES · <span class="buffer-safe">PAGE_SIZE BOUNDED ✓</span>';
+          updateClock();
+
+          if (action === 'del') {
+            drawerContent.className = 'drawer-inner drawer-del';
+            drawerContent.innerHTML = '<span>⚠️</span><span><strong>Line 825 (Legacy sprintf):</strong> Unchecked buffer write. Does not enforce PAGE_SIZE (4096-byte) bounds checking on sysfs buffer.</span>';
+          } else {
+            drawerContent.className = 'drawer-inner drawer-add';
+            drawerContent.innerHTML = '<span>✓</span><span><strong>Line 825 (Modernized sysfs_emit):</strong> Formats timestamp into sysfs buffer while strictly enforcing PAGE_SIZE bounds.</span>';
+          }
+        } else if (hunk === 'cnt') {
+          if (probeCmd) probeCmd.textContent = '$ cat /sys/class/rtc/rtc0/device/timestamp0_count';
+          if (timestampEl) timestampEl.textContent = '"1\n"';
+          if (bufferMeta) bufferMeta.innerHTML = '2 BYTES · <span class="buffer-safe">PAGE_SIZE BOUNDED ✓</span>';
+
+          if (action === 'del') {
+            drawerContent.className = 'drawer-inner drawer-del';
+            drawerContent.innerHTML = '<span>⚠️</span><span><strong>Line 845 (Legacy sprintf):</strong> Unbounded write formatting raw counter integer.</span>';
+          } else {
+            drawerContent.className = 'drawer-inner drawer-add';
+            drawerContent.innerHTML = '<span>✓</span><span><strong>Line 845 (Modernized sysfs_emit):</strong> Formats event counter safely within PAGE_SIZE bounds per sysfs.rst.</span>';
+          }
+        }
+
+        if (drawer) drawer.classList.add('active');
+      });
+
+      row.addEventListener('mouseleave', () => {
+        if (drawer) drawer.classList.remove('active');
+        activeHunk = 'ts';
+        if (probeCmd) probeCmd.textContent = '$ cat /sys/class/rtc/rtc0/device/timestamp0';
+        if (bufferMeta) bufferMeta.innerHTML = '21 BYTES · <span class="buffer-safe">PAGE_SIZE BOUNDED ✓</span>';
+        updateClock();
+      });
+    });
+  }
+
+  initKernelRTC();
+
   // kick off 3d deck & accordion broadsheets
   new KineticDeck();
   new ProjectDossier();

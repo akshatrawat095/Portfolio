@@ -79,7 +79,7 @@
     html, body {
       margin: 0;
       padding: 0;
-      background-color: #FDFBF7;
+      background-color: #FBF9F5;
     }
     body.loading-locked {
       overflow: hidden !important;
@@ -170,11 +170,11 @@
       <div class="loader-incision-line"></div>
       <div class="loader-center-crosshair">
         <svg viewBox="0 0 24 24" class="crosshair-svg" fill="none">
-          <circle cx="12" cy="12" r="3.5" stroke="#C85A17" stroke-width="1.2" />
-          <line x1="12" y1="2" x2="12" y2="7.5" stroke="#C85A17" stroke-width="1.2" />
-          <line x1="12" y1="16.5" x2="12" y2="22" stroke="#C85A17" stroke-width="1.2" />
-          <line x1="2" y1="12" x2="7.5" y2="12" stroke="#C85A17" stroke-width="1.2" />
-          <line x1="16.5" y1="12" x2="22" y2="12" stroke="#C85A17" stroke-width="1.2" />
+          <circle cx="12" cy="12" r="3.5" stroke="#BF5700" stroke-width="1.2" />
+          <line x1="12" y1="2" x2="12" y2="7.5" stroke="#BF5700" stroke-width="1.2" />
+          <line x1="12" y1="16.5" x2="12" y2="22" stroke="#BF5700" stroke-width="1.2" />
+          <line x1="2" y1="12" x2="7.5" y2="12" stroke="#BF5700" stroke-width="1.2" />
+          <line x1="16.5" y1="12" x2="22" y2="12" stroke="#BF5700" stroke-width="1.2" />
         </svg>
       </div>
     </div>
@@ -753,7 +753,148 @@
       </ul>
     </section>
 
-    <!-- 4. The Arsenal (Botanical Specimen Spread) -->
+    <!-- 4. Upstream Contributions (Kernel Mainline Docket) -->
+    <section class="zine-kernel" id="upstream-section">
+      <div class="kernel-header">
+        <div class="kernel-header-left">
+          <h2 class="section-heading">03 / UPSTREAM CONTRIBUTIONS</h2>
+          <span class="kernel-subheading">LINUX KERNEL · DEVICE DRIVERS</span>
+        </div>
+        <div class="kernel-header-right">
+          <span class="kernel-badge">MERGED IN V7.4-RC1</span>
+        </div>
+      </div>
+
+      <div class="kernel-docket">
+        <!-- Left: Context & Ledger Metadata -->
+        <div class="kernel-meta-col">
+          <div class="kernel-title-wrap">
+            <span class="kernel-vol-tag">MAINLINE DOCKET // FOLIO 01</span>
+            <h3 class="kernel-title">Real-Time Clock Driver Modernization</h3>
+            <p class="kernel-desc">
+              Replaced unbounded <code>sprintf()</code> calls with <code>sysfs_emit()</code> in the Micro Crystal RV-3028 real-time clock driver to enforce <code>PAGE_SIZE</code> buffer boundary safety in sysfs attribute callbacks. Reviewed by Alexandre Belloni and merged into mainline by Linus Torvalds for Linux 7.4-rc1.
+            </p>
+          </div>
+
+          <div class="kernel-spec-table">
+            <div class="kernel-spec-row">
+              <span class="kernel-spec-key">SUBSYSTEM</span>
+              <span class="kernel-spec-val">RTC (Real-Time Clock)</span>
+            </div>
+            <div class="kernel-spec-row">
+              <span class="kernel-spec-key">DRIVER FILE</span>
+              <span class="kernel-spec-val mono">drivers/rtc/rtc-rv3028.c</span>
+            </div>
+            <div class="kernel-spec-row">
+              <span class="kernel-spec-key">MAINLINE TREE</span>
+              <span class="kernel-spec-val">torvalds/linux (v7.4-rc1)</span>
+            </div>
+            <div class="kernel-spec-row">
+              <span class="kernel-spec-key">REVIEWED BY</span>
+              <span class="kernel-spec-val">Alexandre Belloni</span>
+            </div>
+            <div class="kernel-spec-row">
+              <span class="kernel-spec-key">MERGED BY</span>
+              <span class="kernel-spec-val highlight-merged">Linus Torvalds</span>
+            </div>
+          </div>
+
+          <div class="kernel-actions">
+            <a href="https://github.com/torvalds/linux/commit/55bb5877494d6c99898b959aa593663ce4676f4e" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-primary">
+              <span>VIEW COMMIT (55BB587)</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <a href="https://lore.kernel.org/all/?q=Akshat+Rawat" target="_blank" rel="noopener noreferrer" class="broadsheet-btn btn-secondary">
+              <span>LORE MAILING LIST</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Archival Patch Diff Slip with Live Hardware RTC Simulation -->
+        <div class="kernel-diff-col">
+          <div class="diff-slip-card">
+            <div class="diff-slip-header">
+              <div class="diff-slip-title">
+                <span class="rtc-chip-badge">
+                  <span class="rtc-pulse-dot"></span>
+                  RV-3028-C7 RTC
+                </span>
+                <span class="diff-file-path">drivers/rtc/rtc-rv3028.c</span>
+              </div>
+              <span class="diff-badge-stamp">MERGED · v7.4-rc1</span>
+            </div>
+
+            <div class="diff-code-body">
+              <!-- Hunk 01: timestamp0_show -->
+              <div class="diff-hunk-meta-row">
+                <span class="diff-hunk-header">@@ -825,7 +825,7 @@ static ssize_t timestamp0_show(...)</span>
+                <span class="diff-quartz-rate">32.768 kHz QUARTZ</span>
+              </div>
+              <div class="diff-line diff-del diff-interactive-row" data-hunk="ts" data-action="del">
+                <span class="diff-ln">825</span>
+                <span class="diff-sign">-</span>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;return sprintf(buf, "%ptR\n", &amp;tm);</code>
+              </div>
+              <div class="diff-line diff-add diff-interactive-row" data-hunk="ts" data-action="add">
+                <span class="diff-ln">825</span>
+                <span class="diff-sign">+</span>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;return sysfs_emit(buf, "%ptR\n", &amp;tm);</code>
+              </div>
+
+              <div class="diff-hunk-sep"></div>
+
+              <!-- Hunk 02: timestamp0_count_show -->
+              <div class="diff-hunk-meta-row">
+                <span class="diff-hunk-header">@@ -845,7 +845,7 @@ static ssize_t timestamp0_count_show(...)</span>
+                <span class="diff-quartz-rate">EVENT COUNTER</span>
+              </div>
+              <div class="diff-line diff-del diff-interactive-row" data-hunk="cnt" data-action="del">
+                <span class="diff-ln">845</span>
+                <span class="diff-sign">-</span>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;return sprintf(buf, "%u\n", count);</code>
+              </div>
+              <div class="diff-line diff-add diff-interactive-row" data-hunk="cnt" data-action="add">
+                <span class="diff-ln">845</span>
+                <span class="diff-sign">+</span>
+                <code>&nbsp;&nbsp;&nbsp;&nbsp;return sysfs_emit(buf, "%u\n", count);</code>
+              </div>
+
+              <!-- Silent resting drawer: smoothly glides open on hover for either hunk -->
+              <div class="diff-hover-drawer" id="kernel-diff-drawer">
+                <div class="drawer-inner" id="kernel-drawer-content"></div>
+              </div>
+
+              <!-- Live Hardware RTC Silicon Output Probe -->
+              <div class="rtc-live-probe">
+                <div class="rtc-probe-top">
+                  <span class="rtc-probe-prompt" id="kernel-probe-cmd">$ cat /sys/class/rtc/rtc0/device/timestamp0</span>
+                  <div class="rtc-chip-telemetry">
+                    <span class="rtc-pulse-dot"></span>
+                    <span id="kernel-unix-epoch">UNIX: 1793190800</span>
+                  </div>
+                </div>
+                <div class="rtc-probe-buffer">
+                  <span class="buffer-label">SYSFS BUFFER:</span>
+                  <code class="buffer-val" id="kernel-live-timestamp">"2026-11-06T07:13:20\n"</code>
+                  <span class="buffer-meta" id="kernel-buffer-meta">21 BYTES · <span class="buffer-safe">PAGE_SIZE BOUNDED ✓</span></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="diff-slip-footer">
+              <div class="diff-footer-meta">
+                <span class="diff-label">COMMIT SHA</span>
+                <code class="diff-sha" title="Full SHA: 55bb5877494d6c99898b959aa593663ce4676f4e">55bb5877494d</code>
+              </div>
+              <span class="diff-status-pill">● MAINLINE ACCEPTED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. The Arsenal (Botanical Specimen Spread) -->
     <section class="zine-toolkit" id="arsenal-section">
       <!-- Hyper-Realistic Studio Gulmohar Branch (Positioned on Left with wrapper to preserve scaleX) -->
       <div class="arsenal-floral-wrap">
@@ -767,7 +908,7 @@
       <div class="deck-wrapper">
         <div class="deck-header">
           <div class="deck-header-meta">
-            <h2 class="section-heading">03 / THE ARSENAL</h2>
+            <h2 class="section-heading">04 / THE ARSENAL</h2>
             <span class="index-count">03 SPECIMENS</span>
           </div>
           <h3 class="deck-title">Tactile <span class="deck-script">Disciplines.</span></h3>

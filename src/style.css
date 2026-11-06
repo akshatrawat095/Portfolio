@@ -24,11 +24,11 @@
 }
 
 :root {
-  --ivory: #FDFBF7;
-  --ink: #1C1A17;
-  --orange: #C85A17;
-  --pistachio: #C5D8B4;
-  --chartreuse: #C0D72F;
+  --ivory: #FBF9F5;
+  --ink: #1C1917;
+  --orange: #BF5700;
+  --pistachio: #BDD6AB;
+  --chartreuse: #BFD834;
   
   --font-display-sans: 'Vertaz Display', 'Bebas Neue', 'Inter', sans-serif; 
   --font-display-serif: 'Bhelmora', 'Playfair Display', serif;
@@ -37,6 +37,7 @@
   --font-body: 'Cormorant Garamond', 'Georgia', serif;
   --font-accent: 'Instrument Serif', 'Playfair Display', serif;
   --font-ui: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Courier New', monospace;
   
   --border-ink: 1px solid var(--ink);
 }
@@ -567,7 +568,7 @@ body {
 }
 
 .project-item.dossier-active {
-  background-color: #FAF7F0;
+  background-color: #FAF5EB;
 }
 
 /* Row Trigger Button Area */
@@ -784,11 +785,11 @@ body {
 }
 
 .barcode-orange {
-  background-image: repeating-linear-gradient(90deg, #1C1A17 0, #1C1A17 1.5px, transparent 1.5px, transparent 3px, #C85A17 3px, #C85A17 4.5px, transparent 4.5px, transparent 6.5px);
+  background-image: repeating-linear-gradient(90deg, #1C1917 0, #1C1917 1.5px, transparent 1.5px, transparent 3px, #BF5700 3px, #BF5700 4.5px, transparent 4.5px, transparent 6.5px);
 }
 
 .barcode-chartreuse {
-  background-image: repeating-linear-gradient(90deg, #1C1A17 0, #1C1A17 1.5px, transparent 1.5px, transparent 3px, #768E1B 3px, #768E1B 4.5px, transparent 4.5px, transparent 6.5px);
+  background-image: repeating-linear-gradient(90deg, #1C1917 0, #1C1917 1.5px, transparent 1.5px, transparent 3px, #768E1B 3px, #768E1B 4.5px, transparent 4.5px, transparent 6.5px);
 }
 
 .unfold-toggle-btn {
@@ -1520,6 +1521,545 @@ body {
 
 
 
+
+/* ============================================
+   UPSTREAM CONTRIBUTIONS (KERNEL MAINLINE DOCKET)
+   ============================================ */
+.zine-kernel {
+  padding: clamp(5rem, 8vh, 7rem) 0 clamp(4rem, 6vh, 5.5rem) 0;
+  position: relative;
+  z-index: 25;
+  border-top: var(--border-ink);
+}
+
+.kernel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 4rem 2rem 4rem;
+  border-bottom: var(--border-ink);
+}
+
+.kernel-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.kernel-subheading {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  opacity: 0.6;
+  text-transform: uppercase;
+}
+
+.kernel-header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.kernel-badge {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 13px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  color: var(--orange);
+}
+
+/* The Archival Docket Split Layout */
+.kernel-docket {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 3.5rem;
+  padding: 3.5rem 4rem 0 4rem;
+  align-items: start;
+}
+
+/* Left: Narrative & Metadata Specs */
+.kernel-meta-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.kernel-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.kernel-vol-tag {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--orange);
+  text-transform: uppercase;
+}
+
+.kernel-title {
+  font-family: var(--font-display-serif);
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0.25rem 0 0.75rem 0;
+}
+
+.kernel-desc {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+.kernel-desc code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: rgba(28, 26, 23, 0.05);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+  border: 1px solid rgba(28, 26, 23, 0.12);
+}
+
+/* Specification Ledger Table */
+.kernel-spec-table {
+  border: 1px solid var(--ink);
+  background: #FAF5EB;
+}
+
+.kernel-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1.25rem;
+  border-bottom: 1px solid rgba(28, 26, 23, 0.12);
+  font-size: 0.9rem;
+}
+
+.kernel-spec-row:last-child {
+  border-bottom: none;
+}
+
+.kernel-spec-key {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.kernel-spec-val {
+  font-family: var(--font-ui);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.kernel-spec-val.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: -0.2px;
+}
+
+.kernel-spec-val.highlight-merged {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+/* Actions */
+.kernel-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+/* Right: Archival Patch Diff Slip */
+.kernel-diff-col {
+  position: relative;
+}
+
+.diff-slip-card {
+  background: #FAF5EB;
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0px var(--ink);
+  overflow: hidden;
+}
+
+.diff-slip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 1.25rem;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--ink);
+}
+
+.diff-slip-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.diff-patch-num {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+}
+
+.diff-file-path {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.2px;
+}
+
+.diff-badge-stamp {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  text-transform: uppercase;
+}
+
+.diff-code-body {
+  padding: 1.25rem 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.7;
+  overflow-x: auto;
+  background: #FAF5EB;
+}
+
+.diff-hunk-header {
+  color: rgba(28, 26, 23, 0.45);
+  font-size: 11.5px;
+  margin-bottom: 0.35rem;
+}
+
+.diff-line {
+  display: flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  margin: 0.1rem 0;
+  border-radius: 2px;
+}
+
+.diff-del {
+  background: rgba(200, 90, 23, 0.08);
+  color: #9C3600;
+}
+
+.diff-add {
+  background: rgba(197, 216, 180, 0.45);
+  color: #2B5829;
+}
+
+.diff-ln {
+  width: 32px;
+  font-size: 10.5px;
+  opacity: 0.5;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.diff-sign {
+  width: 16px;
+  font-weight: 700;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.diff-line code {
+  font-family: inherit;
+  font-size: inherit;
+  white-space: pre;
+}
+
+.diff-hunk-sep {
+  height: 1px;
+  background: rgba(28, 26, 23, 0.1);
+  margin: 0.9rem 0;
+}
+
+.diff-slip-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  border-top: 1px solid var(--ink);
+  background: var(--ivory);
+  font-size: 11px;
+}
+
+.diff-footer-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.diff-label {
+  font-family: var(--font-ui);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  opacity: 0.5;
+}
+
+.diff-sha {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.diff-status-pill {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 10.5px;
+  letter-spacing: 1.5px;
+  color: #2B5829;
+}
+
+/* Live Hardware RTC Silicon Simulation & Hover Telemetry */
+.rtc-chip-badge {
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.rtc-pulse-dot {
+  width: 6.5px;
+  height: 6.5px;
+  background-color: var(--orange);
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 6px var(--orange);
+  animation: rtcHeartbeat 1s infinite ease-in-out;
+}
+
+@keyframes rtcHeartbeat {
+  0%, 100% { opacity: 0.35; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+
+.diff-hunk-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.diff-quartz-rate {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  opacity: 0.55;
+  letter-spacing: 1px;
+}
+
+.diff-interactive-row {
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.15s ease, filter 0.15s ease;
+}
+
+.diff-interactive-row:hover {
+  filter: brightness(0.96);
+}
+
+.diff-interactive-row::after {
+  content: "INSPECT";
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Bisten', var(--font-ui);
+  font-size: 9px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  pointer-events: none;
+}
+
+.diff-interactive-row:hover::after {
+  opacity: 0.6;
+}
+
+/* Silent resting hover drawer */
+.diff-hover-drawer {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, margin 0.2s ease;
+  margin-top: 0;
+}
+
+.diff-hover-drawer.active {
+  max-height: 80px;
+  opacity: 1;
+  margin-top: 0.65rem;
+}
+
+.drawer-inner {
+  font-family: var(--font-ui);
+  font-size: 10.5px;
+  line-height: 1.45;
+  padding: 0.5rem 0.85rem;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.drawer-del {
+  background: rgba(191, 87, 0, 0.08);
+  color: #9C3600;
+  border: 1px solid rgba(191, 87, 0, 0.25);
+}
+
+.drawer-add {
+  background: rgba(189, 214, 171, 0.45);
+  color: #2B5829;
+  border: 1px solid rgba(43, 88, 41, 0.25);
+}
+
+/* Live Hardware RTC Probe */
+.rtc-live-probe {
+  margin-top: 1.25rem;
+  border: 1px solid var(--ink);
+  background: var(--ivory);
+  padding: 0.9rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  border-left: 3px solid var(--orange);
+}
+
+.rtc-probe-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  border-bottom: 1px solid rgba(28, 25, 23, 0.1);
+  padding-bottom: 0.45rem;
+}
+
+.rtc-probe-prompt {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.rtc-chip-telemetry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  opacity: 0.75;
+}
+
+.rtc-probe-buffer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.buffer-label {
+  font-family: var(--font-ui);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  opacity: 0.5;
+}
+
+.buffer-val {
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(191, 87, 0, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+
+.buffer-meta {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.buffer-safe {
+  color: #2B5829;
+  font-weight: 700;
+}
+
+
+@media (max-width: 992px) {
+  .kernel-docket {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 2rem 0 2rem;
+  }
+  .kernel-header {
+    padding: 0 2rem 2rem 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .kernel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0 1.25rem 1.5rem 1.25rem;
+  }
+  .kernel-header-right {
+    align-items: flex-start;
+  }
+  .kernel-docket {
+    padding: 2rem 1.25rem 0 1.25rem;
+  }
+  .kernel-spec-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  .kernel-spec-val {
+    text-align: left;
+  }
+  .diff-slip-header, .diff-slip-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .diff-code-body {
+    font-size: 11.5px;
+    padding: 1rem 0.75rem;
+  }
+}
+
 /* ============================================
    4. THE ARSENAL — BOTANICAL SPECIMEN SPREAD
    ============================================ */
@@ -1546,6 +2086,14 @@ body {
   mix-blend-mode: multiply;
   z-index: 5;
   pointer-events: none;
+  -webkit-mask-image: 
+    linear-gradient(to right, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.35) 12%, rgba(0, 0, 0, 0.8) 22%, black 32%),
+    linear-gradient(to bottom, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.35) 12%, rgba(0, 0, 0, 0.8) 22%, black 32%);
+  -webkit-mask-composite: source-in;
+  mask-image: 
+    linear-gradient(to right, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.35) 12%, rgba(0, 0, 0, 0.8) 22%, black 32%),
+    linear-gradient(to bottom, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.35) 12%, rgba(0, 0, 0, 0.8) 22%, black 32%);
+  mask-composite: intersect;
 }
 
 .arsenal-floral-left {
@@ -1555,8 +2103,6 @@ body {
   transform: scaleX(-1);
   pointer-events: none;
   filter: contrast(1.1) brightness(1.05) saturate(0.9);
-  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 30% 30%, black 50%, rgba(0, 0, 0, 0.5) 75%, transparent 100%);
-  mask-image: radial-gradient(ellipse 100% 100% at 30% 30%, black 50%, rgba(0, 0, 0, 0.5) 75%, transparent 100%);
 }
 
 /* Floating Petal Field — strictly BEHIND cards */
@@ -2074,7 +2620,7 @@ body {
 }
 
 .card-interface .barcode-orange {
-  background-image: repeating-linear-gradient(90deg, #C85A17 0, #C85A17 1.5px, transparent 1.5px, transparent 3px, #C85A17 3px, #C85A17 4.5px, transparent 4.5px, transparent 7px);
+  background-image: repeating-linear-gradient(90deg, #BF5700 0, #BF5700 1.5px, transparent 1.5px, transparent 3px, #BF5700 3px, #BF5700 4.5px, transparent 4.5px, transparent 7px);
 }
 
 .card-interface .stamp-orange {
@@ -2341,7 +2887,7 @@ body {
 }
 
 .card-craft .barcode-ivory {
-  background-image: repeating-linear-gradient(90deg, #1C1A17 0, #1C1A17 1.5px, transparent 1.5px, transparent 3px, #1C1A17 3px, #1C1A17 4.5px, transparent 4.5px, transparent 7px);
+  background-image: repeating-linear-gradient(90deg, #1C1917 0, #1C1917 1.5px, transparent 1.5px, transparent 3px, #1C1917 3px, #1C1917 4.5px, transparent 4.5px, transparent 7px);
 }
 
 .card-craft .stamp-ivory {
